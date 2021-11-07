@@ -15,27 +15,117 @@ Ne verranno poi descritti gli obiettivi, i vincoli ed il futuro una volta termin
 Il progetto di stage propostomi da Aton S.P.A., mediante la figura del mio \emph{tutor} interno, è riconducibile alla visione d'insieme che l'azienda possiede
 nei confronti delle collaborazioni con gli atenei universitari. Tali percorsi vengono interpretati come mezzo per ampliare il bagaglio di conoscenze proprio 
 dell'azienda riguardo a nuove tecnologie. Questo scopo viene perseguito tramite l'implementazione di \emph{software} che possa contribuire alle soluzioni 
-proprietarie utlizzate poi nei vari progetti cliente. Oltre a questo, gli stage proprosti si pongono come secondo fine la pubblicizzazione dell'azienda 
-cercando di attirare nuovi sviluppatori che possano far crescere il team di programmatori già esistente. \\
+proprietarie utilizzate poi nei vari progetti cliente. Oltre a questo, gli stage proprosti si pongono come secondo fine la pubblicizzazione dell'azienda 
+cercando di attirare nuovi sviluppatori che possano far crescere il team già esistente. \\
 Nel mio caso specifico lo scopo del progetto era quello di studiare l'interazione con dei nuovi lettori RFID al fine di poterne sfruttare ogni funzionalità 
-tramite l'integrazione con la piattaforma proprietaria già in uso preso il reparto RFID. \\
+tramite l'integrazione con la piattaforma proprietaria già in uso preso il reparto. \\
 Le richieste principali sono state:
 \begin{itemize}
-    \item Funzionamento autono: dovendo integrare questi lettori in contensti industriali in cui il carico di lavoro risulta essere particolarmente elevato
+    \item \textbf{Funzionamento autono}: dovendo integrare questi lettori in contensti industriali in cui il carico di lavoro risulta essere particolarmente elevato
     era necessario che i dispositivi potessero lavorare senza la presenza di un operatore umano che gli azionasse e controllasse;
-    \item Tolleranza ai guasti: operando in contesti in cui agenti fisici possono facilmente interrompere la connessione ai dispositivi era necesserio
+    \item \textbf{Tolleranza ai guasti}: operando in contesti in cui agenti fisici possono facilmente interrompere la connessione ai dispositivi era necesserio
     identificare e gestire tali anomalie;
-    \item Integrazione con piattaforme esistenti: dovendo cooperare con piattaforme e software proprietari era necessario
-\end{itemize} 
+    \item \textbf{Integrazione con piattaforme esistenti}: dovendo cooperare con piattaforme e software proprietari era necessario implementare una strategia
+    di comunicazione con tali piattaforme.
+\end{itemize}
+
+Nel decidere come affrontare il problema ho vagliato alcune soluzioni.
+\begin{itemize}
+    \item La prima riguardava la possibilità di sviluppare un applicativo a se stante. Questo si sarebbe interfacciato 
+    con il lettore tramite le librerie offerte dal produttore, per poi andare a comunicare con AMP come illustrato in figura \ref{socket_web} tramite l'utilizzo di un \gls{socket_webg}.
+
+    \begin{figure}[!h] 
+        \centering 
+        \includegraphics[width=1\columnwidth]{tec/socket_web.png} 
+        \caption{Connessione tramite Socket Web - \textbf{fonte} \url{urly.it/3g8w2}}
+        \label{socket_web}
+    \end{figure}
+
+    Il vantaggio principale di questa soluzione era la possibilità di essere completamente indipendente dal \emph{framework OSGi}, avendo così più 
+    libertà in merito alle tecnologie da utilizzare come la versione Java o le librerie necessarie al \emph{logging}.
+    Il maggior problema consisteva nella gestione del ciclo di vita del modulo, questo sarebbe stato eseguito come indipendente dalla paittaforma principale
+    portando di conseguenza molte problematiche su come mantenere solida l'esperienza utente.
+    Il secondo problema riscontrato era dovuto alla gestione degli errori. Utilizzando questa soluzione si sarebbe andato ad aggiungere un nuovo punto
+    di potenziale errore, ovvero, la comunicazione tra l'applicativo e la piattaforma stessa. In aggiunta, nonostante una gestione ottimale di questa comunicazione,
+    le performance generali ottenute non avrebbero soddisfatto a pieno i requisiti attesi.
+    
+    \item Una seconda soluzione invece consisteva nello sviluppo di un modulo per AMP, che si andasse ad interfacciare con il lettore tramite un protocollo
+    testuale \gls{xmlg} di basso livello, chiamato LLRP. 
+    I vantaggi di questa soluzione erano molteplici; come prima cosa vi era una facile gestione del modulo,
+    questo essendo inserito direttamente all'interno di AMP non richiedeva la gestione di un vero e proprio ciclo di vita in quanto già garantito dalla
+    piattaforma stessa. Il secondo grande vantaggio era da ricercarsi nell'utilizzo del protocollo LLRP, questo costituisce uno standard all'interno del
+    settore RFID, garantendo quindi una vasto ecosistema di stumenti e librerie per l'interazione con esso. In aggiunta il protocollo si basa su un'altro 
+    popolare protocollo di rete, ovvero TCP, che garantisce la consegna di ogni pacchetto dati inviato.
+    Nonostante i numerosi vantaggi anche questa soluzione si è dovuta scartare, questo a causa di alcune caratteristiche dei lettori utilizzati che non
+    essendo di fatto standard e di libera licenza non vengono supportate dal protocollo stesso.
+\end{itemize}
+
+La soluzione, infine addottata, è stata l'unione delle due sopra proposta in modo che potesse andare a conciliare i vantaggi di entrambe limitandone al
+contempo le problematiche. Ho scelto quindi di creare un modulo per AMP che andasse però ad utilizzare le librerie proposte dal produttore per interfacciarsi
+con il lettore. Così facendo si ottiene una soluzione dalle molteplici caratteristiche:
+\begin{itemize}
+    \item \textbf{Alte prestazioni}: utilizzando le librerie native offerte dal produttore, e l'integrazione diretta all'interno della piattaforma, non sono presenti
+    colli di bottiglia che possano degradare le prestazioni;
+    \item \textbf{Esperienza utente solida}: l'utente utilizzatore della piattaforma non troverà differenze nell'utilizzo di essa, indifferentemente dal lettore in utilizzo, 
+    rendendo così l'esperienza d'uso più semplice e piacevole; 
+\end{itemize}
+Per la stesura del codice ho quindi optato per l'utilizzo di Java 8 supportano dal framework OSGi Knopflerfish precedentemente descritto. In aggiunta a questo
+ho fatto utilizzo della libreria JNA per interfacciarmi con le librerie offerte dal produttore. JNA è una libreria \emph{open-source} che permette di accedere
+a codice nativo, ovvero scritto in un linguaggio compilato come C e C++, direttamente dal codice scritto in Java. Grazie a questo è possibile realizzare
+soluzioni utilizzando tutti i vantaggi di un linguaggio maturo e di alto livello senza però sacrificare le prestazioni offerte dalle librerie native. \\
+L'obiettivo a cui mira questa soluzione è quello di apprendere le nozioni relative allo sviluppo per i lettori RFID Kathrein tramite le librerie native, cercandone
+quindi i pregi ed i difetti. Inoltre viene sperimentato se l'interfacciamento con codice nativo possa essere una valida alternativa all'utilizzo
+del protocollo LLRP. Se così fosse si potrebbero sfruttare tutte le caratteristiche proprietarie di altri lettori, senza avere la necessità di cambiare strumenti
+di sviluppo, risparmiando di conseguenza molte ore di lavoro e soprattutto abbatendo i costi di formazione per tali tecnologie.
+
+
 %**************************************************************
 \section{Obiettivi}
 \subsection{Obiettivi aziendali}
+L'azienda ha posto dei macro obiettivi principali per quanto riguarda le funzionalità dell'applicativo, sia a livello utente che a livello software. Questi sono stati
+esplicitati nei primi giorni in cui mi è stato presentato il progretto in dettaglio dal mio \emph{tutor} interno.
+\begin{itemize}
+    \item L'applicativo avrebbe dovuto interfacciarsi con tutte le generazioni di lettori Kathrein;
+    \item L'applicativo avrebbe dovuto offrire le stesse funzionalità all'utente degli altri applicativi dedicati ad altri marchi di lettori;
+    \item L'applicativo avrebbe dovuto supportare la lettura di numerosi \emph{tag} simultaneamente, nell'ordine di qualche centinaio;
+    \item L'applicativo avrebbe dovuto essere fruibile direttamente all'interno della piattaforma AMP;
+    \item Le anomalie dovute alla rete dovevano essere gestite e notificate se non risolvibili;
+    \item L'applicativo avrebbe dovuto comandare altri dispositivi IoT come semafori o \emph{buzzer} il cui operato dipendesse da quello del lettore.
+\end{itemize}
 \subsection{Obiettivi personali}
+Tramite l'Università ho avuto accesso all'evento \textbf{Stage-IT}, offerto da AssIndustria Veneto-Centro, in cui vengono messi in diretto collegamento aziende in collaborazione con
+il Dipartimento di Padova e gli studenti laureandi, in modo da poter proporre stage pre-laura.
+Durante l'evento numerosi progetti hanno attratto la mia attenzione, l'offerta proposta da Aton S.P.A. però è riuscita a catturare a pieno il mio interesse.
+Causa di questo è stata la possibilità di lavorare in un contesto a me nuovo ma in fortissima crescita nel mercato odierno. In particolare, l'utilizzo di codice nativo
+tramite Java, all'interno di un contesto in cui l'ottimizzazione ricopre un ruolo cruciale, mi ha fin da subito affascianto permettendomi di
+applicare quanto imparato durante gli anni studio, garantendomi allo stesso tempo una grande occasione per apprendere nuove tecnologie. \\
+Oltre a questo sapevo sarei stato inserito in un ambiente dinamico e collaborativo in cui, grazie alla presenza di numerosi sviluppatori esperti avrei potuto esservare
+le \emph{best practicies} innerenti allo sviluppo \emph{software}. \\
+Gli obiettivi che ambivo a raggiungere riguardavano in primo luogo la mia formazione riguardo a tecnolgie ed ambienti a me finora sconosciuti. In aggiunta era di mio interesse
+poter impiegare quello da me appreso all'interno di un progetto che andasse a coinvolgere un grande numero di utenti, in modo da poterne capire a pieno le problematiche e
+come queste potessero essere risolte, il tutto per realizzare un prodotto funzionante e di utile fruizione.
+
 
 %**************************************************************
 \section{Vincoli}
 \subsection{Vincoli tecnologici}
+Essendo la soluzione basata sulla piattaforma AMP e comprendente delle librerie native proprie del lettore, i vincoli tecnologici hanno fatto si che venissero utilizzate specifiche tecnologie:
+\begin{itemize}
+    \item \textbf{Java 8}: linguaggio di programmazione utilizzato per lo sviluppo;
+    \item \textbf{OSGi Knopflerfish}: \emph{framework} utilizzato per la realizzazione di AMP, mette a disposizione la possibilità di creare moduli autonomi;
+    \item \textbf{JNA}: libreria per accedere a codice nativo;
+\end{itemize}
+
 \subsection{Vincoli temporali}
+Il tempo determinato dallo stage, ovvero 320 ore, è stato il vincolo temporale più rilevante, in quanto è stato impiegato in larga parte per la formazione personale rispetto alle tecnolgie da utilizzare
+e alla teoria riguardante la tecnolgia RFID, indispensabile per capire il funzionamento dei lettori.
+Un altro aspetto indispensabile da considerare è stato riguardo la documentazione offerta dal produttore del lettore, questa a fine commerciali è stata considerevolmente scarsa ed ostica.
+Questo, unito alla presenza di alcuni bug o incompletezze che ho riscontrato all'interno del loro codice ha portato ad una frequente comunicazione fra me ed il loro reparto di sviluppo.
+Questo necessario scambio di informazioni ha invevitabilmente ridotto il tempo a mia disposizione per soddisfare le richieste fattemi.
 
 %**************************************************************
 \section{Futuro del progetto}
+Alla fine dello stage, il prodotto sviluppato è stato revisionato dal mio \emph{tutor} interno che ha vagliato il lavoro realizzato. Tutto il codice scritto è stato inoltre corredato da opportuna
+documentazione ed è contenuto all'interno della \emph{repository} aziendale. Questo sarà utilizzabile nella definizione di nuovi flussi di lavoro o nell'aggiornamento di quelli già esistenti.
+Oltre a ciò il lavoro svolto fornisce una base di partenza per tutti gli sviluppatori che in futuro andranno a doversi interfacciare con codice nativo, siano questi per aggiungere delle funzionalità
+al modulo o per crearne di nuovi.
