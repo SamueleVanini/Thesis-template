@@ -7,15 +7,83 @@
 \label{cap:resoconto-progetto}
 %**************************************************************
 
-\intro{Breve introduzione al capitolo}\\
+\intro{Nel corso di questo capitolo si presenta un resoconto del progetto, descrivendone gli aspetti nel dettaglio. Si illustrano le metodologie di lavoro utilizzato e le scelte
+dietro lo sviluppo delle componenti ritenute più rilevanti o critiche}
 
 %**************************************************************
 \section{Pianificazione delle attività}
+In accordo con il mio \emph{tutor} interno abbbiamo stilato un piano di lavoro suddividendo gli argomenti da affrontare di settimana in settimana, indicando poi per ciascuna settimana
+le ore di lavoro e le attività che avrei svolto. \\
+Viene riportato di seguito il piano di lavoro in forma tabellare:
+
+\begin{table}
+\label{tab:piano-di-lavoro}
+\begin{tabularx}{\textwidth}{ | X | X | X |}
+\hline
+\textbf{Ore settimanali} & \textbf{Attività svolte}\\
+\hline
+Prima settimana - 40 ore & Presentazione del progetto e degli attori coinvolti, predisposizione dell’ambiente di lavoro, 
+formazione sugli apparati \emph{hardware} adottati e inizio studio autono sulle tecnologie adottate. \\
+\hline
+Seconda settimana - 40 ore & Studio autonomo su: tecnolgie e \emph{framework} adottati, teoria RFID, librerie offerte dal produttore degli apparati utilizzati \\
+\hline
+Terza settimana - 40 ore & Progettazione del modulo software ed implementazione delle componenti riguardanti letture tag e invio dati alla piattaforma AMP\\
+\hline
+Quarta settimana - 40 ore & Implementazione delle componenti riguardanti \emph{sessions} e \emph{singulation}\\
+\hline
+Quinta settimana - 40 ore & Implementazione delle componenti riguardanti \emph{transit time} e \emph{dwell time}\\
+\hline
+Sesta settimana - 40 ore & Implementanzione delle componenti riguardanti \emph{kray protocol} e gestione porte \emph{GPIO} \\
+\hline
+Settima settimana - 40 ore & Implementazione della componente riguardante il controllo del modulo dalla piattaforma AMP\\
+\hline
+Ottava settimana - 40 ore & Test approfonditi del prodotto, stesura della documentazione relativa a quanto implementato, 
+stesura di un documento riassuntivo sulla tecnologia JNA e sulle librerie offerte dal produttore.\\
+
+\hline
+\end{tabularx}
+\caption{Piano di lavoro}
+\end{table}
+
 \subsection{Comunicazioni}
+Durante tutta la durata le progetto ho tenuto una comunicazione attiva con tutte le figure aziendali interessate al prodotto da me sviluppato. \\
+Ho tenuto giornalmente delle riunioni con il mio \emph{tutor} interno, della durata di circa 15 minuti in cui esponevo lo stato di avanzamento, riportando
+quanto svolgo durante nell'ultima giornata trascorsa, i problemi sorti e le mie proposte su come su come sviluppare le componenti richieste.
+Ho partecipato regolarmente alle riunioni di reparto svolte ogni lunedì della durata di circa un'ora in ho avuto la possibilità di rendere participi tutti
+gli sviluppatori presenti del lavoro da me svolto e avessi adoperato tecnologie o tecniche ritenute da me di interesse collettivo.
+Oltre agli incontri precedentemente citati, ho tenuto periodicamente delle revisioni di codice con uno dei dipendenti appartenente al gruppo di \emph{tech lead}
+per discutere delle scelte progettuali ed implementative da me fatte, questo verrà approfondito nel capitolo che segue.
+
 \subsection{Revisioni di progetto}
+\label{sub-sect:revisioni-progetto}
+La progettazione e lo sviluppo del progetto sono state intervallate da periodici controlli sulla qualità di quanto da me prodotto. Questi controlli erano
+effettuati insieme ad un sviluppatore esperto facente parte del gruppo di \emph{tech lead} presente in azienda. Durante questi incrontri tutto il codice sorgente
+da me scritto veniva revisionato e ne venivano commentate le caratteristiche e le motivazioni dietro ogni mia scelta. Al termine di questa fase, il prodotto
+veniva testato andando a creare un esempio di una linea di produzione in cui potevo effettuare test di carico o osservare i comportamenti del prodotto a
+situazioni comuni a cui sottoporsi.
 
 %**************************************************************
 \section{Analisi del progetto}
+Nonostante abbia sviluppato l'intero applicativo in autonomia, ho seguito tutti i passi adoperati dal gruppo di sviluppo aziendale per la realizzazione
+di un progetto interno e quindi non finalizzato ad un cliente specifico.
+Questi sono elencati di seguito:
+\begin{itemize}
+    \item \textbf{Incontro con gli \emph{stakeholder}}: in questa fase viene fatto l’incontro tra il gruppo che andrà a sviluppare il prodotto e tutti 
+    gli attori interassati al proggetto. In questa sede vengono discusse varie idea, specificando i requisiti e gli obiettivi che il prodotto dovrà 
+    raggiungere;
+    \item \textbf{\emph{Scouting} delle tecnologie}: dopo aver acquisito le informazioni utili relative al progetto, il gruppo di lavoro inizia a ricercare 
+    le tecnologie che possono risultare più adatte a soddisfare le richieste poste dal committente vagliando anche quelle più sperimentali ed innovative;
+    \item \textbf{Studio di fattibilità}: successivamente viene fatto lo studio di fattibilità, in modo tale da poter capire se il prodotto si può sviluppare 
+    concretamente. Viene svolta anche un’analisi dei rischi e dei costi, al fine di poter presentare a tutti gli interessati al progetto una chiara panoramica
+    di quello che ci si aspetta essere il risultato finale. In questa fase il progetto può essere scartato se considerato non abbastanza vantaggioso;
+    \item \textbf{Sviluppo}: se gli attori coinvolti accettano quanto riportato dallo studio di fattibilità, allora si inizia con la fase vera 
+    e propria dello sviluppo del prodotto. 
+    Il lavoro viene suddiviso in tanti incrementi, come descritto nel modello Agile, così da averlo sempre sotto controllo e poter sempre mostrare 
+    al committente i risultati che si stanno ottenendo;
+    \item \textbf{\emph{Testing}}: in questa fase il prodotto viene testato mediante specifici test, sia manuali che automatici, per verificarne le 
+    funzionalità e assicurarsi che il prodotto abbia soddisfatto le richieste del committente.
+\end{itemize}
+
 \subsection{Funzionalità}
 \subsection{Requisiti chiave}
 \subsection{Casi d'uso}
