@@ -39,7 +39,6 @@ Settima settimana - 40 ore & Implementazione della componente riguardante il con
 \hline
 Ottava settimana - 40 ore & Test approfonditi del prodotto, stesura della documentazione relativa a quanto implementato, 
 stesura di un documento riassuntivo sulla tecnologia JNA e sulle librerie offerte dal produttore.\\
-
 \hline
 \end{tabularx}
 \caption{Piano di lavoro}
@@ -84,10 +83,237 @@ Questi sono elencati di seguito:
     funzionalità e assicurarsi che il prodotto abbia soddisfatto le richieste del committente.
 \end{itemize}
 
-\subsection{Funzionalità}
-\subsection{Requisiti chiave}
+\subsection{Funzionalità principali}
+Dopo aver impostato gli incrementi, in accordo con il mio \emph{tutor} interno, ho redatto una lista di macro funzionalità che il prodotto avrebbe 
+dovuto avere:
+\begin{itemize}
+    \item \textbf{Funzionamento autonomo}: dovendo integrare questi lettori in contesti industriali in cui il carico di lavoro risulta essere particolarmente 
+    elevato, era necessario che i dispositivi potessero lavorare senza la presenza di un operatore umano, che gli azionasse e controllasse;
+    \item \textbf{Tolleranza ai guasti}: operando in contesti in cui agenti fisici possono facilmente interrompere la connessione ai dispositivi, era necesserio
+    identificare e gestire tali anomalie;
+    \item \textbf{Configurazione a "caldo"}: necessitando di cambi di configurazione durante il suo utilizzo, il prodotto doveva poter modificare alcuni 
+    parametri di configurazione senza la necessità di riavviarsi o di interrompere il flusso di lavoro in cui inserito;
+    \item \textbf{Integrazione con AMP}: dovendo inviare dati alla  piattaforma utilizzata per la realizzazione dei flussi di lavoro e ricevere comandi da essa, 
+    era necessario implementare una strategia di comunicazione con tale \emph{software};
+\end{itemize}
+\subsection{Obiettivi e requisiti chiave}
+
+\subsubsection*{Obiettivi}
+Durante la fase di stesura del Piano di Lavoro, io ed il mio \emph{tutor} interno abbiamo prefissato degli obiettivi da raggiungere entro la fine dello stage.
+Di seguito sono riportati mediante una nomenclatura che li identifica univocamente:
+\begin{center}
+    [\textbf{classificazione}][\textbf{numero incrementale}]
+\end{center}
+dove il campo classificazione può avere uno dei seguenti valori:
+\begin{itemize}
+    \item \textbf{O}: requisiti obbligatori, vincolanti in quanto obiettivo primario richiesto dal committente;
+    \item \textbf{D}: requisiti desiderabili, non vincolanti o strettamente necessari, ma dal riconoscibile valore aggiunto;
+    \item \textbf{F}: requisiti facoltativi, rappresentanti valore aggiunto non strettamente competitivo.
+\end{itemize}
+Vengono di seguito riportati in forma tabellare.
+\begin{table}
+    \label{tab:obiettivi}
+    \begin{tabularx}{\textwidth}{ | X | X |}
+    \hline
+    \textbf{Obiettivi} & \textbf{Descrizione}\\
+    \hline
+    O01 & Dimostrazione di una piena conoscenza della teoria legata alla tecnologia RFID \\
+    \hline
+    O02 & Realizzazione di un modulo software pienamente funzionante che rispetti le caratteristiche desiderate dagli stakeholder \\
+    \hline
+    O03 & Realizzazione della documentazione su quanto implementato e sulle tecnologie utilizzate \\
+    \hline
+    D01 & Realizzazione di uno studio di fattibilità sul \emph{porting} del modulo realizzato all'interno dei lettori RFID \\
+    \hline
+    F01 & Esposizione tramite API dello stato fisico dei lettori \\
+    \hline
+    \end{tabularx}
+    \caption{Piano di lavoro}
+\end{table}
+
+\subsubsection*{Analisi dei requisiti}
+Al fine di raggiungere gli obiettivi elencati, io ed il mio \emph{tutor} interno, ci siamo concentrati nella raccorta di requisiti. Questi sono identificati
+da una nomenclatura univoca, cosí composta:
+\begin{center}
+    \textbf{R}[\textbf{classificazione}][\textbf{tipologia}][\textbf{numero incrementale}]
+\end{center}
+
+Per \textbf{classificazione} del requisito si intende:
+\begin{itemize}
+    \item \textbf{O}: obbligatoro;
+    \item \textbf{D}: desiderabile;
+    \item \textbf{F}: facoltativo.
+\end{itemize}
+
+Per \textbf{tipologia} del requisito si intende:
+\begin{itemize}
+    \item \textbf{F}: funzionale;
+    \item \textbf{Q}: qualitativo;
+    \item \textbf{P}: prestazionale;
+    \item \textbf{V}: vincolo.
+\end{itemize}
+
+Di seguito sono riportati solo i requisiti funzionali estratti dai Casi d'Uso più significativi presentati in sezione \ref{sub-sec:use-case}.
+\begin{table}
+    \label{tab:requisiti-fun}
+    \begin{tabularx}{\textwidth}{ | X | X | X |}
+    \hline
+    \textbf{Requisito} & \textbf{Descrizione} & \textbf{Fonte}\\
+    \hline
+    ROF1 & L'utente deve poter visionare la configurazione del lettore & UC1 \\
+    \hline
+    ROF2 & L'utente deve poter modificare la configurazione del lettore & UC2 \\
+    \hline
+    ROF3 & L'applicativo deve poter tornare in funzione in maniera autonoma a seguito di errori dovuti ala rete & UC5 \\
+    \hline
+    ROF4 & L'utente deve poter modificare lo stato delle porte GPIO connesse al lettore & UC3 \\
+    \hline
+    ROF5 & Il modulo deve inviare i dati relativi ai tag letti alla piattaforma AMP & UC4 \\
+    \hline
+    \end{tabularx}
+    \caption{Tabella di tracciamento dei requisiti funzionali}
+\end{table}
+
+Per quanto riguarda i requisiti di vincolo:
+\begin{table}
+    \label{tab:requisiti-vinc}
+    \begin{tabularx}{\textwidth}{ | X | X | X |}
+    \hline
+    \textbf{Requisito} & \textbf{Descrizione} & \textbf{Fonte}\\
+    \hline
+    ROV1 & Utilizzo di Java 8 per la codifica del modulo & Interna \\
+    \hline
+    ROV2 & Utilizzo della libreria JNA per interfacciarsi con librerie native & Interna \\
+    \hline
+    \end{tabularx}
+    \caption{Tabella di tracciamento dei requisiti di vincolo}
+\end{table}
+
+I requisiti qualitativi rilevati sono i seguenti:
+\begin{table}
+    \label{tab:requisiti-qual}
+    \begin{tabularx}{\textwidth}{ | X | X | X |}
+    \hline
+    \textbf{Requisito} & \textbf{Descrizione} & \textbf{Fonte}\\
+    \hline
+    ROQ1 & Il codice sorgente dev'essere versionato tramite il \emph{software} Git & Interna \\
+    \hline
+    ROQ2 & Dev'essere realizzato un documento riguardante le tecnologie, le scelte implementative e progettuali con relative motivazioni & Interna \\
+    \hline
+    \end{tabularx}
+    \caption{Tabella di tracciamento dei requisiti qualitativi}
+\end{table}
+
+I requisiti prestazionali rilevati sono i seguenti:
+\begin{table}
+    \label{tab:requisiti-pre}
+    \begin{tabularx}{\textwidth}{ | X | X | X |}
+    \hline
+    \textbf{Requisito} & \textbf{Descrizione} & \textbf{Fonte}\\
+    \hline
+    ROP1 & Il modulo deve supportare la lettura di centinaia di tag simultaneamente & Interna \\
+    \hline
+    \end{tabularx}
+    \caption{Tabella di tracciamento dei requisiti qualitativi}
+\end{table}
+
+
 \subsection{Casi d'uso}
+\label{sub-sec:use-case}
+
+\begin{usecase}{1}{Visualizzazione configurazione del lettore}
+\usecaseactors{Utente}
+\usecasepre{L'utente è entrato all'interno di AMP ed ha lanciato il comando per visualizzare la configurazione del lettore}
+\usecasedesc{AMP mette a disposizione una finestra relativa al modulo in cui lanciare comandi verso questo tra cui visualizzazione e modifica 
+della configurazione del lettore}
+\usecasepost{Il modulo restituisce ad AMP le informazioni riguardanti la configurazione che vengono mostrate a schermo}
+\label{uc:1}
+\end{usecase}
+
+\begin{figure}[!h] 
+    \centering 
+    \includegraphics[width=0.9\columnwidth]{usecase/UC1} 
+    \caption{Use Case - UC1: Visualizzazione configurazione del lettore}
+\end{figure}
+
+\begin{usecase}{2}{Mofidica configurazione del lettore}
+\usecaseactors{Utente}
+\usecasepre{L'utente è entrato all'interno di AMP ed ha lanciato il comando per modificare la configurazione del lettore}
+\usecasedesc{AMP mette a disposizione una finestra relativa al modulo in cui lanciare comandi verso questo tra cui visualizzazione e modifica 
+della configurazione del lettore}
+\usecasepost{Il modulo restituisce ad AMP un feedback sull'esito dell'operazione e nel caso di esito positivo la configurazione inserita}
+\label{uc:2}
+\end{usecase}
+
+\begin{figure}[!h] 
+    \centering 
+    \includegraphics[width=0.9\columnwidth]{usecase/UC2} 
+    \caption{Use Case - UC2: Modifica configurazione del lettore}
+\end{figure}
+
+\begin{usecase}{3}{Modifica dello stato delle porte GPIO}
+\usecaseactors{Utente}
+\usecasepre{L'utente è entrato all'interno di AMP ed ha lanciato il comando per modificare lo stato delle porte GPIO}
+\usecasedesc{AMP mette a disposizione una finestra relativa al modulo in cui lanciare il comando relativo alla modifica dello stato di una porta GPIO}
+\usecasepost{Il modulo restituisce ad AMP un feedback sull'esito dell'operazione}
+\label{uc:3}
+\end{usecase}
+
+\begin{figure}[!h] 
+    \centering 
+    \includegraphics[width=0.9\columnwidth]{usecase/UC3} 
+    \caption{Use Case - UC3: Modifica dello stato delle porte GPIO}
+\end{figure}
+
+\begin{usecase}{4}{UC4: Visualizzazione configurazione del lettore}
+\usecaseactors{Modulo, AMP}
+\usecasepre{Il modulo ha raccolto dei dati che vuole mandare ad AMP}
+\usecasedesc{AMP mette a disposizione un canale di comunicazione per l'invio di dati da un modulo qualsiasi ad essa}
+\usecasepost{AMP restituisce al modulo un feeback sull'esito dell'operazione}
+\label{uc:4}
+\end{usecase}
+
+\begin{figure}[!h] 
+    \centering 
+    \includegraphics[width=0.9\columnwidth]{usecase/UC4} 
+    \caption{Use Case - UC4: Visualizzazione configurazione del lettore}
+\end{figure}
+
+\begin{usecase}{5}{UC5: Rispistino connessione al lettore in caso di anomalia}
+\usecaseactors{Modulo}
+\usecasepre{Il modulo riscontra una disconnessione dal lettore}
+\usecasedesc{Il modulo periodicamente controlla l'esistenza di una connessione attiva e valida verso il lettore in operazione}
+\usecasepost{Il modulo entra in uno stato di \emph{recovery} in cui cerca di ripristinare la connessione e notifica l'utente dell'accaduto}
+\label{uc:5}
+\end{usecase}
+
 \subsection{Tecnologie coinvolte}
+Per lo sviluppo del modulo, come accennato in sezione \ref{sub-sec:vinc-tec}, sono state utilizzate le seguenti tecnologie:
+\begin{itemize}
+    \item \textbf{OSGi Knopflerfish}: si tratta di un \emph{framework open-source} sviluppato da Makewave che rispecchia gli standard della OSGi Alliance.
+    Questa fondazione, sovvenzionata a sua volta dalla Eclipse Foundation, si pone l'obiettivo di formalizzare l'evoluzione di tecnolgie industriali per
+    la creazione di soluzioni modulari sulla piattaforma JVM.
+    Knopflerfish offre molte \emph{feature} per agevolare lo sviluppo dell'applicativo, tra cui:
+    \begin{itemize}
+        \item Componenti per la creazione di un \emph{bundle} integrabile direttamente all'interno di AMP;
+        \item Strumenti per l'accesso ad una \emph{thread pool} gestista dalle grandi performance;
+        \item Un canale di cominicazione per lo scambio di dati tra i \emph{bundle}.
+    \end{itemize}
+    \item \textbf{JNA}: è una libreria \emph{open-source} che permette di accedere a codice nativo, ovvero scritto in un linguaggio compilato come C e C++, 
+    direttamente dal codice scritto in Java. Il suo utilizzo è particolarmente adatto a contesti industriali dove si vuole permettere l'interazione con
+    codice che possa operare direttamente sull'\emph{hardware} del dispositivo.
+    Le principali \emph{feature} che offre per raggiungere questo intento sono:
+    \begin{itemize}
+        \item Conversione o rappresentazione di tipi di dati nativi nelle controparti utilizzate dalla JVM;
+        \item Astrazione del paradigma di programmazione procedurale in programmazione ad oggetti;
+        \item Gestione autonoma della memoria utilizzata dal codice nativo.  
+    \end{itemize}
+    \item \textbf{Java 8}: linguaggio di programmazione orientato agli oggetti, scelto per lo sviluppo dell'applicativo per la sua integrazione con 
+    Knopflerfish. La scelta relativa la versione è stata presa a valle di alcune considerazioni, la \emph{release} 8 infatti presenta numerose migliorie
+    come l'introduzione dei metodi lambda, conservando inoltre tutte le aggiunte alla libreria di base riguardante il parallelismo e la concorrenza introdotte
+    nella versione 7. In aggiunta a questo, l'utilizzo di questa versione avrebbe impedito il versificarsi di conflitti fra JVM differenti all'interno della
+    stessa soluzione
+\end{itemize}
 
 %Durante la fase di analisi iniziale sono stati individuati alcuni possibili rischi a cui si potrà andare incontro.
 %Si è quindi proceduto a elaborare delle possibili soluzioni per far fronte a tali rischi.\\
