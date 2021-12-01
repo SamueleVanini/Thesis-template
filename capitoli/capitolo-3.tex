@@ -326,12 +326,80 @@ Per lo sviluppo del modulo, come accennato in sezione \ref{sub-sec:vinc-tec}, so
 
 %**************************************************************
 \section{Sviluppo delle componenti critiche}
+Durante lo sviluppo del modulo sono state identificati e risolti numerosi problemi, i più importanti tra questi sono stati illustrati di seguito.
 \subsection{Design del modulo}
+
+\subsubsection*{Problematica}
+La prima difficoltà riscontrata consisteva nella scelta dell'archietettura del modulo. Questo infatti, come descritto precedentemente, 
+doveva potersi integrare all'interno della piattaforma AMP. 
+
+\subsubsection*{Soluzione adottata}
+Ho deciso quindi di strutturare il modulo in 2 \emph{package} principali: source e driver. Così facendo ho potuto inserire tutto
+il codice relativo all'integrazione con il \emph{framework} OSGi e alla piattaforma AMP in generale all'interno di source.
+Questo ha permesso di poter astrarre il funzionamento del lettore, implementato all'interno del \emph{package} driver, rendendolo
+di fatto invisibile ad ogni suo utilizzatore. Il vantaggio principale di questa soluzione è la portabilità del modulo stesso, questo
+potrà essere riutilizzato in semplicità in futuri progetti cliente, indipendenti dalla piattaforma attualmente in uso.
+Una visione d'insieme di questa organizzazione è visibile nella figura \ref{package_diag}. In questa si può notare che il \emph{package}
+driver ne contenga a sua volta altri, specializzati per compito, completamente invisibili ad ogni possibile utilizzatore del
+modulo.
+
+\begin{figure}[!h] 
+    \centering 
+    \includegraphics[width=1\columnwidth]{tec/UML/package_diag.png} 
+    \caption{Diagramma dei package del modulo}
+    \label{package_diag}
+\end{figure}
+
+Al fine di rendere l'utilizzo del \emph{package} driver il più semplice possibile, ho deciso di utilizzare un \emph{pattern} progettuale
+apposito, il \emph{command pattern}. Questo, come riportato in figura \ref{command_pattern}, permette di identificare le varie
+funzionalità e capacità di una componente del codice come azioni o comandi analoghi a quelli che possiamo trovare sul telecomando
+di un televisore. Ciò permette di utilizzare tutte le caratteristiche offerte dal lettore senza avere la necessità di conoscerne il
+funzionamento specifico, semplificando di conseguenza l'applicazione della \emph{bussiness logic} desiderata.
+Oltre a ciò, tale \emph{pattern} è stato particolarmente adatto per la risultizione di altri problemi, questi vengono descritti 
+nelle sezioni \ref{sub-sec:DLS} e \ref{sub-sec:GPIO}.
+
+\begin{figure}[!h] 
+    \centering 
+    \includegraphics[width=1\columnwidth]{tec/UML/command_pattern.png} 
+    \caption{Diagramma UML del Command Pattern - \textbf{fonte} \url{urly.it/3gn4p}}
+    \label{command_pattern}
+\end{figure}
+
+%**************************************************************
 \subsection{Interfacciamento con librarie native}
+\subsubsection*{Problatica}
+La seconda difficoltà riscontrata consisteva nell'utilizzo delle librerie native offerte dal produttore dei lettori.
+Questo era dovuto principalmente a 2 fattori. In primo luogo vi era l'accesso a tale codice direttamente dal modulo Java.
+In secondo luogo vi era la differenza tra i paradigmi di programmazione utilizzati, ovvero, il paradigma procedurale ed il paradigma
+orientato agli oggetti. 
+
+%Come precedentamente descritto, il modulo avrebbe dovuto interfacciarsi con delle librerie native offerte dal produttore dei lettori.
+%Nello specifico, queste librerie si sarebbe dovuto accedere direttamente dal codice Java. A complicare il tutto vi era la differenza tra i paradigmi di
+%programmazione utilizzati per il modulo e per le librerie, ovvero, il paradigma orientato agli oggetti ed il paradigma procedurale. 
+\subsubsection*{Soluzione adottata}
+Per risolvere questo problema ho ricorso all'utilizzo della libreria JNA. Questa, tramite l'implementazione di interfacce ed oggetti appositi, 
+permette di effettuare un \emph{wrap} del codice nativo andando a rendere disponibili tutti i tipi di dati primitivi all'interno 
+dell'ecosistema JVM. Un esempio di come questo sia stato effettuato è visibile nell'immagine .
+
+// TODO: inserire immagine della libreria RRU4Java
+
+Questo però non è stato sufficente a risolvere i problemi relativi ai differenti paradgmi di programmazione utilizzati. La libreria, infatti, era strutturata
+in modo che ogni funzione richiamata ritornasse solo un codice di errore relativo alla libreria stessa. Ogni dato relativo rilevante che ci si sarebbe potuti
+aspettare come risultato veniva invece ricevuto come parametro di una funzione di \emph{callback}. Come riportato in figura , vi era quindi una interruzione
+nel normale flusso di chiamate dei metodi, con la conseguente necessità di gestione dei dati e degli errori. 
+
+%**************************************************************
+
+Qui parlo delle interfacce usate per wrappare il codice nativo e la questione callback
 \subsection{Ottimizzazione dei tempi di lettura}
 \subsection{Linguaggio di dominio specifico}
+\label{sub-sec:DLS}
+Qui parlo della libreria usata per creare il DLS
 \subsection{Controllo delle porte GPIO}
+\label{sub-sec:GPIO}
+Qui parlo del command pattern utilizzato per tutte le interazioni e nello specifico quello delle porte GPIO
 \subsection{Tolleranza ai guasti}
+Qui parlo del thread responsabile della gestione della connessione
 
 
 %**************************************************************
