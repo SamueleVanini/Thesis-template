@@ -16,7 +16,7 @@ In accordo con il mio \emph{tutor} interno abbbiamo stilato un piano di lavoro s
 le ore di lavoro e le attività che avrei svolto. \\
 Viene riportato di seguito il piano di lavoro in forma tabellare:
 
-\begin{table}
+\begin{table}[!h]
 \label{tab:piano-di-lavoro}
 \begin{tabularx}{\textwidth}{ | X | X | X |}
 \hline
@@ -99,6 +99,7 @@ dovuto avere:
 \subsection{Obiettivi e requisiti chiave}
 
 \subsubsection*{Obiettivi}
+\label{sub-sub-sec:obiettivi-cap-3}
 Durante la fase di stesura del Piano di Lavoro, io ed il mio \emph{tutor} interno abbiamo prefissato degli obiettivi da raggiungere entro la fine dello stage.
 Di seguito sono riportati mediante una nomenclatura che li identifica univocamente:
 \begin{center}
@@ -106,12 +107,12 @@ Di seguito sono riportati mediante una nomenclatura che li identifica univocamen
 \end{center}
 dove il campo classificazione può avere uno dei seguenti valori:
 \begin{itemize}
-    \item \textbf{O}: requisiti obbligatori, vincolanti in quanto obiettivo primario richiesto dal committente;
-    \item \textbf{D}: requisiti desiderabili, non vincolanti o strettamente necessari, ma dal riconoscibile valore aggiunto;
-    \item \textbf{F}: requisiti facoltativi, rappresentanti valore aggiunto non strettamente competitivo.
+    \item \textbf{O}: obiettivi obbligatori, vincolanti in quanto obiettivo primario richiesto dal committente;
+    \item \textbf{D}: obiettivi desiderabili, non vincolanti o strettamente necessari, ma dal riconoscibile valore aggiunto;
+    \item \textbf{F}: obiettivi facoltativi, rappresentanti valore aggiunto non strettamente competitivo.
 \end{itemize}
 Vengono di seguito riportati in forma tabellare.
-\begin{table}
+\begin{table}[h!]
     \label{tab:obiettivi}
     \begin{tabularx}{\textwidth}{ | X | X |}
     \hline
@@ -132,6 +133,7 @@ Vengono di seguito riportati in forma tabellare.
 \end{table}
 
 \subsubsection*{Analisi dei requisiti}
+\label{sub-sec:req}
 Al fine di raggiungere gli obiettivi elencati, io ed il mio \emph{tutor} interno, ci siamo concentrati nella raccorta di requisiti. Questi sono identificati
 da una nomenclatura univoca, cosí composta:
 \begin{center}
@@ -154,7 +156,7 @@ Per \textbf{tipologia} del requisito si intende:
 \end{itemize}
 
 Di seguito sono riportati solo i requisiti funzionali estratti dai Casi d'Uso più significativi presentati in sezione \ref{sub-sec:use-case}.
-\begin{table}
+\begin{table}[h!]
     \label{tab:requisiti-fun}
     \begin{tabularx}{\textwidth}{ | X | X | X |}
     \hline
@@ -175,7 +177,7 @@ Di seguito sono riportati solo i requisiti funzionali estratti dai Casi d'Uso pi
 \end{table}
 
 Per quanto riguarda i requisiti di vincolo:
-\begin{table}
+\begin{table}[h!]
     \label{tab:requisiti-vinc}
     \begin{tabularx}{\textwidth}{ | X | X | X |}
     \hline
@@ -190,7 +192,7 @@ Per quanto riguarda i requisiti di vincolo:
 \end{table}
 
 I requisiti qualitativi rilevati sono i seguenti:
-\begin{table}
+\begin{table}[h!]
     \label{tab:requisiti-qual}
     \begin{tabularx}{\textwidth}{ | X | X | X |}
     \hline
@@ -205,7 +207,7 @@ I requisiti qualitativi rilevati sono i seguenti:
 \end{table}
 
 I requisiti prestazionali rilevati sono i seguenti:
-\begin{table}
+\begin{table}[h!]
     \label{tab:requisiti-pre}
     \begin{tabularx}{\textwidth}{ | X | X | X |}
     \hline
@@ -355,8 +357,10 @@ apposito, il \emph{command pattern}. Questo, come riportato in figura \ref{comma
 funzionalità e capacità di una componente del codice come azioni o comandi analoghi a quelli che possiamo trovare sul telecomando
 di un televisore. Ciò permette di utilizzare tutte le caratteristiche offerte dal lettore senza avere la necessità di conoscerne il
 funzionamento specifico, semplificando di conseguenza l'applicazione della \emph{bussiness logic} desiderata.
-Oltre a ciò, tale \emph{pattern} è stato particolarmente adatto per la risultizione di altri problemi, questi vengono descritti 
-nelle sezioni \ref{sub-sec:DLS} e \ref{sub-sec:GPIO}.
+Oltre a ciò, tale \emph{pattern} è stato particolarmente adatto per la risultizione di altri problemi, uno di questi viene descritto
+approfonditamente nella sezione \ref{sub-sec:DLS}.
+
+%questi vengono descritti nelle sezioni \ref{sub-sec:DLS} e \ref{sub-sec:GPIO}.
 
 \begin{figure}[!h] 
     \centering 
@@ -367,7 +371,7 @@ nelle sezioni \ref{sub-sec:DLS} e \ref{sub-sec:GPIO}.
 
 %**************************************************************
 \subsection{Interfacciamento con librarie native}
-\subsubsection*{Problatica}
+\subsubsection*{Problematica}
 La seconda difficoltà riscontrata consisteva nell'utilizzo delle librerie native offerte dal produttore dei lettori.
 Questo era dovuto principalmente a 2 fattori. In primo luogo vi era l'accesso a tale codice direttamente dal modulo Java.
 In secondo luogo vi era la differenza tra i paradigmi di programmazione utilizzati, ovvero, il paradigma procedurale ed il paradigma
@@ -379,30 +383,363 @@ orientato agli oggetti.
 \subsubsection*{Soluzione adottata}
 Per risolvere questo problema ho ricorso all'utilizzo della libreria JNA. Questa, tramite l'implementazione di interfacce ed oggetti appositi, 
 permette di effettuare un \emph{wrap} del codice nativo andando a rendere disponibili tutti i tipi di dati primitivi all'interno 
-dell'ecosistema JVM. Un esempio di come questo sia stato effettuato è visibile nell'immagine .
+dell'ecosistema JVM. Due esempi di come questo venga effettuato sono riportati nei frammenti di codice di seguito ripotati.
+Il primo frammento riporta la conversione di un tipo enumeratore denominato CommunicationStandard da nativo a tipo JVM e la conversione
+di una funzione nativa che utilizza tale tipo come parametro.
+\begin{lstlisting}
+    // RRU4JavaLibrary.java
+    public abstract interface RRU4JavaLibrary extends Library {
+        public abstract tReaderErrorCode SetCommunicationStandard(Pointer readerConnection, 
+            tCommunicationStandard paramtCommunicationStandard);
 
-// TODO: inserire immagine della libreria RRU4Java
+        public static enum tCommunicationStandard {
+            CS_None((byte)0), CS_Autodetect((byte)1), CS_ETSI_EN302208((byte)2), CS_ETSI_EN302208_LBT((byte)3), 
+            CS_FCC((byte)4), CS_Special((byte)5), CS_China((byte)6), CS_Thailand((byte)7), CS_Brazil((byte)8), 
+            CS_SouthKorea((byte)9), CS_Peru((byte)10), CS_Singapore((byte)11), CS_Australia((byte)12), CS_Japan((byte)13), 
+            CS_Last((byte)14);
+    
+            private final byte value;
+    
+            private tCommunicationStandard(byte paramByte) {
+                this.value = paramByte;
+            }
+            
+            public byte getValue() {
+                return this.value;
+            }
+        }
+    }
+\end{lstlisting}
+Il secondo frammento mostra invece come venga effettuato il caricamente della libreria nativa a seconda della piattaforma
+in cui il modulo viene eseguito.
+\begin{lstlisting}
+    // ReaderDllLoader.java
+    public class ReaderDllLoader {
+        
+        public static RRU4JavaLibrary load(String pathToLib) {
+		    Map<String, Object> options = new HashMap<String, Object>();
+		    options.put(Library.OPTION_TYPE_MAPPER, new RRU4TypeMapper());
+            NativeLibrary.addSearchPath("RRU4", pathToLib);
+            return (RRU4JavaLibrary) Native.loadLibrary(
+		        Platform.isWindows() ? "RRU4" : "ReaderLib",
+		        RRU4JavaLibrary.class, options);
+        }
+    }
+\end{lstlisting}
 
+\label{callback}
 Questo però non è stato sufficente a risolvere i problemi relativi ai differenti paradgmi di programmazione utilizzati. La libreria, infatti, era strutturata
-in modo che ogni funzione richiamata ritornasse solo un codice di errore relativo alla libreria stessa. Ogni dato relativo rilevante che ci si sarebbe potuti
-aspettare come risultato veniva invece ricevuto come parametro di una funzione di \emph{callback}. Come riportato in figura , vi era quindi una interruzione
-nel normale flusso di chiamate dei metodi, con la conseguente necessità di gestione dei dati e degli errori. 
+in modo che ogni funzione richiamata ritornasse solo un codice di errore relativo alla libreria stessa. Ogni dato rilevante che ci si sarebbe potuti
+aspettare come risultato viene invece ricevuto come parametro di una funzione di \emph{callback}. Questo comporta una interruzione nel normale flusso di
+chiamate dei metodi, con la conseguente necessità di gestione dei dati e degli errori.
+Per ovviare a ciò ho provveduto ad utilizzare un \emph{Exchanger} fornito dalla libreria standard di Java. 
+L'utilizzo di questo è visile nel frammento di codice di seguito riportato.
+
+\begin{lstlisting}
+    // ResultHandlerGetPortPower.java
+    public class ResultHandlerGetPortPower extends BaseConfigurationHandler 
+        implements tDllResultHandlerGetPortPower {
+            @Override
+            public void resultHandlerGetPortPower(tResultFlag enResultFlag, byte ubPort,
+                    byte ubPortPower, Pointer rru4Handle, Pointer pTag) {
+                if (enResultFlag != tResultFlag.RF_NoError) {
+                    exchangeData(new ReaderStatus.StatusBuilder()
+                            .withException(new ReaderException(
+                                    "Error occured getting port power: " + enResultFlag,
+                                    enResultFlag))
+                            .build());
+                } else {
+                    exchangeData(new ReaderStatus.StatusBuilder()
+                            .withPortConfig(new AntennaConfig(new Antenna[] {
+                                    new Antenna(ubPort, ubPortPower / 4, 0) }))
+                            .build());
+                }
+            }
+    }
+
+    // Reader.java
+    public class Reader {
+        
+        public Antenna getPortPower(byte portNumber) throws InterruptedException {
+		    tReaderErrorCode errorCode = libraryWrapper
+		            .GetPortPower(connection.get().getHandler(), portNumber);
+		    String MSG = "Error getting antenna power: " + errorCode;
+		    checkErrors(errorCode, MSG);
+		    ReaderStatus newStatus = exchanger.exchange(null);
+		    checkCallBackErrors(newStatus);
+		    AntennaConfig config = newStatus.getPortConfig();
+		    Antenna port = config.getPort(portNumber);
+		    return port;
+	    }
+    }
+\end{lstlisting}
+
+Nello specifico, all'arrivo di una \emph{callback} la libreria JNA istanzia un nuovo \emph{thread} per elaborarla. 
+Il primo processo che durante l'esecuzione raggiunge l'\emph{exchanger} viene messo in attesa finchè anche il secondo non
+raggiunge il punto desiderato, instaurando di conseguenza una sincronia fra essi. Una volta che questa sincronia viene
+creata avviene uno scambio di dati tramite oggetti che permette ai \emph{thread} di continuare con la loro normale
+esecuzione.
 
 %**************************************************************
+\subsection{Gestione delle operazioni lettura}
+% Parlare del thread di lettura e della struttura producer-concumer utilizzata
+\subsubsection*{Problematica}
+Nonostante la sincronizzazione delle \emph{callback}, descritta nella sezione \ref{callback}, fornisca molteplici
+vantaggi, pecca in quanto a prestazioni ed autonomia. Questo è dovuto in primo luogo alle aspettative sul funzionamento
+del modulo, questo infatti deve poter essere utilizzabile, per esempio: dare informazioni sullo stato delle antenne, notificare
+dati ad AMP, modificare delle configurazioni del lettore, ecc. Nonostante stia eseguendo delle operazioni di lettura.
+Il secondo problema riscontrato è di natura invece più tecnica. Per come è stata implementata la libreria offerta dal produttore,
+anche le operazioni di lettura restituiscono i dati desiderati tramite il meccanismo delle \emph{callback}. Questo comportando
+la creazione di un nuovo \emph{thread} ogni volta che viene effetuata un'operazione di tale tipo rischia di saturare 
+i \emph{thread} offribili dal sistema operativo in uso.
 
-Qui parlo delle interfacce usate per wrappare il codice nativo e la questione callback
-\subsection{Ottimizzazione dei tempi di lettura}
+\subsubsection*{Soluzione adottata}
+Per ovviare a questo problema ho deciso di trattare le \emph{callback} di lettura dati in modo diverso dalle altre. 
+Nello specifico, il \emph{thread} che viene creato ad ogni chiamata, viene liberato il più velocemente possibile grazie all'utilizzo di un
+"consumatore". Questo è un processo che a sua volta è incaricato di ricevere i dati delle letture tramite una struttura sincronizzata ad hoc, 
+lasciando quindi che la \emph{callback} muoia, per poi inviarli alla piattaforma AMP. Quanto descritto è visibile nel frammento di codice
+di seguito riportato.
+
+\label{HandlerReading}
+\begin{lstlisting}
+    
+    // ResultHandlerSyncReadDataUntilEndOfBankAny.java
+    public class ResultHandlerSyncReadDataUntilEndOfBankAny
+        implements tDllResultHandlerSyncReadDataUntilEndOfBankAny {
+
+        @Override
+        public void resultHandlerSyncReadDataUntilEndOfBankAny(
+                tResultFlag enResultFlag, byte ubExtendedResultFlag,
+                tEPCListEntry pEPCList, Pointer rru4Handle, Pointer pTag) {
+            Builder readingBuilder = new Reading.Builder()
+				    	    .withEPC(epc.toString())
+					        .withReaderTimestamp(pEPCList.udwTimestamp)
+					        .withAntenna(pEPCList.ubPort)
+					        .withRSSI(pEPCList.ubRSSI);
+            consumer.accept(readingBuilder.build());
+        }
+    }
+    
+    // KathreinConsumer.java
+    public class KathreinConsumer {
+
+        private final BlockingQueue<Reading> readQueue = new LinkedBlockingQueue<Reading>();
+        private ConsumerAction thread;
+        
+        public void addToQueue(Reading t) {
+		    readQueue.add(t);
+	    }
+
+        private class ConsumerAction extends TerminableYarn {
+		    @Override
+		    protected long doCycle() {
+			    Collection<Reading> buffer = new ArrayList<>(readQueue.size());
+			    readQueue.drainTo(buffer);
+			    for (Reading item : buffer) {
+				    lambda.accept(item.ampFormatMessage(ip, procName));
+			    }
+			    return reportPeriod;
+		    }
+	    }
+    }
+\end{lstlisting}
+
+%Come visibile infatti dal frammento di codice \ref{HandlerReading}, i dati della lettura vengono utilizzati per la creazione
+%di un oggetto apposito che viene inviato al consumatore. Questo, a sua volta, andrà ad inviare tali dati 
+%**************************************************************
 \subsection{Linguaggio di dominio specifico}
 \label{sub-sec:DLS}
-Qui parlo della libreria usata per creare il DLS
-\subsection{Controllo delle porte GPIO}
-\label{sub-sec:GPIO}
-Qui parlo del command pattern utilizzato per tutte le interazioni e nello specifico quello delle porte GPIO
-\subsection{Tolleranza ai guasti}
-Qui parlo del thread responsabile della gestione della connessione
+\subsubsection*{Problematica}
+La quarta difficoltà riscontata consisteva in come gli utenti del modulo avrebbero potuto interfacciarsi con esso.
+Questi sono costituiti dagli tecnici che ne effettuano la configurazione e da altri moduli che ne modificano il funzionamento
+in base a precise regole di \emph{bussiness}. Per i primi è disponibile una finestra di dialogo all'interno di AMP che permette
+di inviare di inviare stringhe di testo al modulo, mentre per gli altri moduli è possibile inviare sempre del testo
+tramite delle apposite cose all'interno di AMP. Entrambe le tipologie di interazione portano quindi alla chiamata del medesimo metodo.
 
+\subsubsection*{Soluzione adottata}
+Per creare un metodo di interazione che fosse univoco e facilmente mantenibile, ho quindi deciso di formalizzare un DLS, ovvero
+un linguaggio di dominio specifico. Questo è un linguaggio di specifica utilizzabile per comandare il lettore, specificando uno o più
+comandi concatenabili.
+
+Per la creazione di tale linguaggio ho utilizzato la libreria \emph{open source} Parboiled. Questa fornisce tutto il necessario per l'implementazione
+di un \emph{parser} PEG direttamente all'interno del codice Java. In aggiunta a ciò viene fornita una implementazione di un \emph{parser} ricorsivo discendente ed il
+supporto per la costruzione di: \emph{abstract syntax tree}, report sugli errori di analisi e di procedure di recupero in caso di errore.
+Simile ad un CFG, PEG è una grammatica formale analitica deterministica che descrive un linguaggio formale in termini di un insieme di regole per riconoscere
+le stringhe che appartengono al linguaggio.
+Nel frammento di codice di seguito riportato è possibile vedere come la libreria venga utilizzata per per la creazione di una parte della grammatica.
+Questo, unito all'utilizzo del Command Pattern descritto in precedenza, permette la creazione di comandi eseguibili partendo esclusivamente da testo.
+
+\begin{lstlisting}
+    // QueryParser.java
+    @BuildParseTree
+    public class QueryParser extends BaseParser<Object> {
+        
+        public Rule input() {
+		    return OneOrMore(Command(), FirstOf(Ch('\n'), EOI));
+	    }
+
+	    public Rule Command() {
+		    return FirstOf(StartReading(), StopReading(), SetPortPower(),
+		            GetPortPower(), SetGPO());
+	    }
+
+        public Rule SetPortPower() {
+		    return Sequence(QRY_SET_POWER, whiteSpaces(), Arg(), whiteSpaces(),
+		            Arg(), Optional(whiteSpaces()),
+		            Boolean.valueOf(push(new SetAntennaPowerCommand(reader, kpl,
+		                    CommandType.CONF, ((Integer) pop(1)).intValue(),
+		                    ((Integer) pop()).intValue()))));
+	    }
+
+        public Rule Arg() {
+		    return number();
+	    }
+
+	    public Rule number() {
+		    return Sequence(OneOrMore(CharRange('0', '9')),
+		            Boolean.valueOf(push(new Integer(match()))));
+	    }
+
+	    public Rule whiteSpaces() {
+		    return OneOrMore(Ch(' '));
+	    }
+    }
+\end{lstlisting}
+
+%**************************************************************
+%\subsection{Controllo delle porte GPIO}
+%\label{sub-sec:GPIO}
+%Qui parlo del command pattern utilizzato per tutte le interazioni e nello specifico quello delle porte GPIO
+\subsection{Tolleranza ai guasti}
+\subsubsection*{Problematica}
+La quinta difficoltà consisteva nella gestione dei guasti dovuti alla disconnessione del lettore dal modulo.
+Il problema è scomponibile in N problemi più piccoli, quali:
+\begin{itemize}
+    \item Identificazione del guasto
+    \item Procedura di arresto delle operazioni di lettura
+    \item Ripristino dello stato del lettore in caso di nuova connessione
+\end{itemize}
+
+\subsubsection*{Soluzione adottata}
+Per agevolare la gestione della connessione ho quindi provveduto ad implementare un \emph{thread} indipendente,
+chiamato ConnectionManager, avente il solo scopo di effettuare connessione, disconnessione e controllare che questa sia ancora valida e attiva.
+Un frammento di codice relativo al funzionamento di questo è di seguito riportato. 
+\begin{lstlisting}
+    // ConnectionManager.java
+    public class ConnectionManager {
+
+        private final AtomicReference<Connection> connection;
+        private ReconnectionThread reconnectionThread;
+        private final Runnable reconnectionSignal;
+
+        public boolean isConnectionAlive() {
+		    return connection.get().isValid();
+	    }
+
+        private boolean attemptConnection() throws Exception {
+		    Thread.sleep(reconnectionSleep);
+		    try {
+			    boolean connected = connect().get().isValid();
+			    return connected;
+		    } catch (ConnectException ex) {
+			    throw new ConnectException("Re-connection failed");
+		    }
+	    }
+
+        private class ReconnectionThread extends TerminableYarn {
+            @Override
+            protected long doCycle() {
+                if (isConnectionAlive())
+                    return 1000;
+                try {
+                    boolean reconnected = attemptConnection();
+                    if (reconnected)
+                        reconnectionSignal.run();
+                } catch (Exception e) {
+                    kpl.info("In attempting (re)connection: " + e.getMessage());
+                    return reconnectionSleep;
+                }
+                return 1000;
+            }
+	    }
+	}
+\end{lstlisting}
+Come è visibile, ogni secondo il \emph{thread} controlla che l'oggetto relativo alla connessione sia ancora valido.
+Nel caso in cui questo sia stato invalidato da una \emph{callback} apposita, andrà a tentare una riconnessione, che
+nel caso avesse successo, segnalerà al modulo la necessità di riconfigurare il lettore.
+La configurazione viene eseguita eseguendo nuovamente i comandi di configurazione che sono stati lanciati dall'avvio
+del modulo. Affinchè questa lista di comandi non presenti ripetizioni inutili, prima di ogni inserimento viene effettuata
+una riduzione di tale lista. Di seguito viene riportato un frammento del codice responsabile di queste operazioni.
+\begin{lstlisting}
+    // ConfigurationCommandHistory.java
+    public class ConfigurationCommandHistory {
+
+        private final List<DriverCommand> commandsHistory = new ArrayList<>(3);
+
+        public void addCommand(DriverCommand command) {
+            if (command.getType() != CommandType.CONF)
+                return;
+            addCommandAndreduceHistory(command);
+        }
+
+        public void executeConfHistory() throws Exception {
+            Iterator<DriverCommand> it = commandsHistory.iterator();
+            while (it.hasNext()) {
+                it.next().execute();
+            }
+        }
+
+        private void addCommandAndreduceHistory(DriverCommand command) {
+            for (int i = 0; i < commandsHistory.size(); i++) {
+                DriverCommand cur = commandsHistory.get(i);
+                if (command.isSameCommand(cur)) {
+                    commandsHistory.set(i, command);
+                    return;
+                }
+            }
+            commandsHistory.add(command);
+        }
+    }
+
+    public class Reader {
+
+        private void reconfigureReader() {
+			history.executeConfHistory();
+			kpl.info("Reader re-configured and ready to use");
+		}
+	}
+    }
+\end{lstlisting}
 
 %**************************************************************
 \section{Risultati raggiunti}
 \subsection{Requisiti soddisfatti}
+Un elemento oggettivo per descrivere la completezza del codice richiesto riguarda la copertura dei requisiti maturati durante lo stage.
+L’azienda, avendo già esperienza con progretti analoghi, non ha ritenuto necessario richiedere funzionalità 
+desiderabili o opzionali. Considerando infatti, tutte le richieste fatte, come necessarie affinchè il prodotto da me sviluppato potesse essere utilizzabile
+all'interno delle loro soluzioni aziendali.
+Conseguentemente a ciò, i requisiti, funzionali, di vincolo e qualitativi, sono risultati essere tutti \textbf{obbligatori}.
+In sezione \ref{sub-sec:req} sono stati elencati solamente i requisiti degni di nota che però non rappresentano la totalità di quelli 
+effettivamente da soddisfare.
+La tabella \ref{tab:req-solved} a seguito invece rappresenta la totalità dei requisiti individuati con l’azienda.
+\begin{table}[h!]
+    \label{tab:req-solved}
+    \begin{tabularx}{\textwidth}{ | X | X | X | X | }
+    \hline
+    \textbf{Tipologia requisiti} & \textbf{Numero requisiti} & \textbf{Classificazione} & \textbf{Soddisfatti}\\
+    \hline
+    Funzionali & 26 & Obbligatori & 26 \\
+    \hline
+    Vincolo & 5 & Obbligatori & 5 \\
+    \hline
+    Qualitativi & 2 & Obbligatori & 2 \\
+    \hline
+    \end{tabularx}
+    \caption{Piano di lavoro}
+\end{table}
+
 \subsection{Prodotti creati}
+Un altro elemento oggettivo sul lavoro svolto è sicuramente la quantità di prodotti creati. 
+Nel caso specifico ho prodotto diversi file sorgente per un totale di circa 3600 righe di codice, ognuno di essi corredato
+con l'opportuna documentazione sotto forma di Java-doc. In aggiunta a questo ho redatto 3 documenti, uno riguardante l'utilizzo
+della libreria JNA e due riguardanti le parti più rilevanti del modulo.
