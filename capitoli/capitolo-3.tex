@@ -8,17 +8,17 @@
 %**************************************************************
 
 \intro{Nel corso di questo capitolo si presenta un resoconto del progetto, descrivendone gli aspetti nel dettaglio. Si illustrano le metodologie di lavoro utilizzato e le scelte
-dietro lo sviluppo delle componenti ritenute più rilevanti o critiche}
+dietro lo sviluppo delle componenti ritenute più rilevanti o critiche.}
 
 %**************************************************************
 \section{Pianificazione delle attività}
 In accordo con il mio \emph{tutor} interno abbbiamo stilato un piano di lavoro suddividendo gli argomenti da affrontare di settimana in settimana, indicando poi per ciascuna settimana
 le ore di lavoro e le attività che avrei svolto. \\
-Viene riportato di seguito il piano di lavoro in forma tabellare:
+Tale piano viene riportato di seguito nella tabella \ref{tab:piano-di-lavoro}.
+%Viene riportato di seguito il piano di lavoro in forma tabellare:
 
 \begin{table}[!h]
-\label{tab:piano-di-lavoro}
-\begin{tabularx}{\textwidth}{ | X | X | X |}
+\begin{tabularx}{\textwidth}{|c|X|}
 \hline
 \textbf{Ore settimanali} & \textbf{Attività svolte}\\
 \hline
@@ -42,28 +42,28 @@ stesura di un documento riassuntivo sulla tecnologia JNA e sulle librerie offert
 \hline
 \end{tabularx}
 \caption{Piano di lavoro}
+\label{tab:piano-di-lavoro}
 \end{table}
 
 \subsection{Comunicazioni}
 Durante tutta la durata le progetto ho tenuto una comunicazione attiva con tutte le figure aziendali interessate al prodotto da me sviluppato. \\
 Ho tenuto giornalmente delle riunioni con il mio \emph{tutor} interno, della durata di circa 15 minuti in cui esponevo lo stato di avanzamento, riportando
-quanto svolgo durante nell'ultima giornata trascorsa, i problemi sorti e le mie proposte su come su come sviluppare le componenti richieste.
-Ho partecipato regolarmente alle riunioni di reparto svolte ogni lunedì della durata di circa un'ora in ho avuto la possibilità di rendere participi tutti
-gli sviluppatori presenti del lavoro da me svolto e avessi adoperato tecnologie o tecniche ritenute da me di interesse collettivo.
-Oltre agli incontri precedentemente citati, ho tenuto periodicamente delle revisioni di codice con uno dei dipendenti appartenente al gruppo di \emph{tech lead}
-per discutere delle scelte progettuali ed implementative da me fatte, questo verrà approfondito nel capitolo che segue.
+quanto svolgo durante nell'ultima giornata trascorsa, i problemi sorti e le mie proposte sullo sviluppo delle componenti richieste.
+Ho partecipato regolarmente alle riunioni di reparto, svolte ogni lunedì, della durata di circa un'ora in ho avuto la possibilità di rendere participi tutti
+gli sviluppatori presenti del lavoro da me svolto. %e avessi adoperato tecnologie o tecniche ritenute da me di interesse collettivo.
+Oltre agli incontri precedentemente citati, ho tenuto periodicamente delle revisioni del codice con uno dei dipendenti appartenente al gruppo di \emph{tech lead}
+per discutere le scelte progettuali ed implementative da me fatte, questo verrà approfondito nella sezione \ref{sub-sect:revisioni-progetto}.
 
 \subsection{Revisioni di progetto}
 \label{sub-sect:revisioni-progetto}
 La progettazione e lo sviluppo del progetto sono state intervallate da periodici controlli sulla qualità di quanto da me prodotto. Questi controlli erano
-effettuati insieme ad un sviluppatore esperto facente parte del gruppo di \emph{tech lead} presente in azienda. Durante questi incrontri tutto il codice sorgente
-da me scritto veniva revisionato e ne venivano commentate le caratteristiche e le motivazioni dietro ogni mia scelta. Al termine di questa fase, il prodotto
-veniva testato andando a creare un esempio di una linea di produzione in cui potevo effettuare test di carico o osservare i comportamenti del prodotto a
-situazioni comuni a cui sottoporsi.
+effettuati da me ed un sviluppatore esperto facente parte del gruppo di \emph{tech lead} presente in azienda. Durante questi incrontri tutto il codice sorgente
+è stato revisionato, commendandone le caratteristiche e le scelte fatte. Al termine di questa fase, il prodotto
+veniva testato tramite la simulazione di contesti reali in cui potevo effettuare test di carico e controllare l'assenza di anomalie.
 
 %**************************************************************
 \section{Analisi del progetto}
-Nonostante abbia sviluppato l'intero applicativo in autonomia, ho seguito tutti i passi adoperati dal gruppo di sviluppo aziendale per la realizzazione
+Nonostante abbia sviluppato l'intero applicativo in autonomia, ho seguito tutti i passi adoperati dal gruppo di sviluppo per la realizzazione
 di un progetto interno e quindi non finalizzato ad un cliente specifico.
 Questi sono elencati di seguito:
 \begin{itemize}
@@ -71,14 +71,14 @@ Questi sono elencati di seguito:
     gli attori interassati al proggetto. In questa sede vengono discusse varie idea, specificando i requisiti e gli obiettivi che il prodotto dovrà 
     raggiungere;
     \item \textbf{\emph{Scouting} delle tecnologie}: dopo aver acquisito le informazioni utili relative al progetto, il gruppo di lavoro inizia a ricercare 
-    le tecnologie che possono risultare più adatte a soddisfare le richieste poste dal committente vagliando anche quelle più sperimentali ed innovative;
-    \item \textbf{Studio di fattibilità}: successivamente viene fatto lo studio di fattibilità, in modo tale da poter capire se il prodotto si può sviluppare 
-    concretamente. Viene svolta anche un’analisi dei rischi e dei costi, al fine di poter presentare a tutti gli interessati al progetto una chiara panoramica
+    le tecnologie che possono risultare più adatte a soddisfare le richieste poste dal committente, vagliando anche quelle più sperimentali ed innovative;
+    \item \textbf{Studio di fattibilità}: successivamente viene fatto lo studio di fattibilità, in modo tale da poter capire se il prodotto si possa sviluppare 
+    concretamente. Viene svolta anche un’analisi dei rischi e dei costi, al fine di poter presentare, a tutti gli interessati al progetto, una chiara panoramica
     di quello che ci si aspetta essere il risultato finale. In questa fase il progetto può essere scartato se considerato non abbastanza vantaggioso;
     \item \textbf{Sviluppo}: se gli attori coinvolti accettano quanto riportato dallo studio di fattibilità, allora si inizia con la fase vera 
     e propria dello sviluppo del prodotto. 
-    Il lavoro viene suddiviso in tanti incrementi, come descritto nel modello Agile, così da averlo sempre sotto controllo e poter sempre mostrare 
-    al committente i risultati che si stanno ottenendo;
+    Il lavoro viene suddiviso in tanti incrementi, come descritto nel modello Agile, così da garantirne un controllo completo. Allo stesso tempo,
+    una suddivisione incrementale permette una facile esposizione dei risultati raggiunti al committente.
     \item \textbf{\emph{Testing}}: in questa fase il prodotto viene testato mediante specifici test, sia manuali che automatici, per verificarne le 
     funzionalità e assicurarsi che il prodotto abbia soddisfatto le richieste del committente.
 \end{itemize}
@@ -96,6 +96,7 @@ dovuto avere:
     \item \textbf{Integrazione con AMP}: dovendo inviare dati alla  piattaforma utilizzata per la realizzazione dei flussi di lavoro e ricevere comandi da essa, 
     era necessario implementare una strategia di comunicazione con tale \emph{software};
 \end{itemize}
+
 \subsection{Obiettivi e requisiti chiave}
 
 \subsubsection*{Obiettivi}
@@ -114,7 +115,7 @@ dove il campo classificazione può avere uno dei seguenti valori:
 Vengono di seguito riportati in forma tabellare.
 \begin{table}[h!]
     \label{tab:obiettivi}
-    \begin{tabularx}{\textwidth}{ | X | X |}
+    \begin{tabularx}{\textwidth}{ | c | X |}
     \hline
     \textbf{Obiettivi} & \textbf{Descrizione}\\
     \hline
@@ -155,10 +156,9 @@ Per \textbf{tipologia} del requisito si intende:
     \item \textbf{V}: vincolo.
 \end{itemize}
 
-Di seguito sono riportati solo i requisiti funzionali estratti dai Casi d'Uso più significativi presentati in sezione \ref{sub-sec:use-case}.
-\begin{table}[h!]
-    \label{tab:requisiti-fun}
-    \begin{tabularx}{\textwidth}{ | X | X | X |}
+Nella tabella \ref{tab:requisiti-fun} sono riportati solo i requisiti funzionali estratti dai Casi d'Uso più significativi presentati in sezione \ref{sub-sec:use-case}.
+\begin{table}[!htb]
+    \begin{tabularx}{\textwidth}{ | c | X | c |}
     \hline
     \textbf{Requisito} & \textbf{Descrizione} & \textbf{Fonte}\\
     \hline
@@ -174,12 +174,11 @@ Di seguito sono riportati solo i requisiti funzionali estratti dai Casi d'Uso pi
     \hline
     \end{tabularx}
     \caption{Tabella di tracciamento dei requisiti funzionali}
+    \label{tab:requisiti-fun}
 \end{table}
-
-Per quanto riguarda i requisiti di vincolo:
-\begin{table}[h!]
-    \label{tab:requisiti-vinc}
-    \begin{tabularx}{\textwidth}{ | X | X | X |}
+Per quanto riguarda i requisiti di vincolo, consultare la tabella \ref{tab:requisiti-vinc}.
+\begin{table}[!htb]
+    \begin{tabularx}{\textwidth}{ | c | X | c |}
     \hline
     \textbf{Requisito} & \textbf{Descrizione} & \textbf{Fonte}\\
     \hline
@@ -189,12 +188,11 @@ Per quanto riguarda i requisiti di vincolo:
     \hline
     \end{tabularx}
     \caption{Tabella di tracciamento dei requisiti di vincolo}
+    \label{tab:requisiti-vinc}
 \end{table}
-
-I requisiti qualitativi rilevati sono i seguenti:
-\begin{table}[h!]
-    \label{tab:requisiti-qual}
-    \begin{tabularx}{\textwidth}{ | X | X | X |}
+I requisiti qualitativi rilevati sono elencati nella tabella \ref{tab:requisiti-qual}:
+\begin{table}[!htb]
+    \begin{tabularx}{\textwidth}{ | c | X | c |}
     \hline
     \textbf{Requisito} & \textbf{Descrizione} & \textbf{Fonte}\\
     \hline
@@ -204,12 +202,11 @@ I requisiti qualitativi rilevati sono i seguenti:
     \hline
     \end{tabularx}
     \caption{Tabella di tracciamento dei requisiti qualitativi}
+    \label{tab:requisiti-qual}
 \end{table}
-
-I requisiti prestazionali rilevati sono i seguenti:
-\begin{table}[h!]
-    \label{tab:requisiti-pre}
-    \begin{tabularx}{\textwidth}{ | X | X | X |}
+Infine, i requisiti prestazionali rilevati sono elencati nella tabella \ref{tab:requisiti-pre}:
+\begin{table}[!htb]
+    \begin{tabularx}{\textwidth}{ | c | X | c |}
     \hline
     \textbf{Requisito} & \textbf{Descrizione} & \textbf{Fonte}\\
     \hline
@@ -217,12 +214,11 @@ I requisiti prestazionali rilevati sono i seguenti:
     \hline
     \end{tabularx}
     \caption{Tabella di tracciamento dei requisiti qualitativi}
+    \label{tab:requisiti-pre}
 \end{table}
-
-
+\newpage
 \subsection{Casi d'uso}
 \label{sub-sec:use-case}
-
 \begin{usecase}{1}{Visualizzazione configurazione del lettore}
 \usecaseactors{Utente}
 \usecasepre{L'utente è entrato all'interno di AMP ed ha lanciato il comando per visualizzare la configurazione del lettore}
@@ -267,7 +263,7 @@ della configurazione del lettore}
     \caption{Use Case - UC3: Modifica dello stato delle porte GPIO}
 \end{figure}
 
-\begin{usecase}{4}{UC4: Visualizzazione configurazione del lettore}
+\begin{usecase}{4}{Visualizzazione configurazione del lettore}
 \usecaseactors{Modulo, AMP}
 \usecasepre{Il modulo ha raccolto dei dati che vuole mandare ad AMP}
 \usecasedesc{AMP mette a disposizione un canale di comunicazione per l'invio di dati da un modulo qualsiasi ad essa}
@@ -281,7 +277,7 @@ della configurazione del lettore}
     \caption{Use Case - UC4: Visualizzazione configurazione del lettore}
 \end{figure}
 
-\begin{usecase}{5}{UC5: Rispistino connessione al lettore in caso di anomalia}
+\begin{usecase}{5}{Rispistino connessione al lettore in caso di anomalia}
 \usecaseactors{Modulo}
 \usecasepre{Il modulo riscontra una disconnessione dal lettore}
 \usecasedesc{Il modulo periodicamente controlla l'esistenza di una connessione attiva e valida verso il lettore in operazione}
@@ -311,10 +307,10 @@ Per lo sviluppo del modulo, come accennato in sezione \ref{sub-sec:vinc-tec}, so
         \item Gestione autonoma della memoria utilizzata dal codice nativo.  
     \end{itemize}
     \item \textbf{Java 8}: linguaggio di programmazione orientato agli oggetti, scelto per lo sviluppo dell'applicativo per la sua integrazione con 
-    Knopflerfish. La scelta relativa la versione è stata presa a valle di alcune considerazioni, la \emph{release} 8 infatti presenta numerose migliorie
-    come l'introduzione dei metodi lambda, conservando inoltre tutte le aggiunte alla libreria di base riguardante il parallelismo e la concorrenza introdotte
+    Knopflerfish. La scelta relativa alla versione è stata presa a valle di alcune considerazioni. La \emph{release} 8 infatti presenta numerose migliorie
+    come l'introduzione dei metodi lambda, conservando però, tutte le aggiunte alla libreria di base riguardante il parallelismo e la concorrenza introdotte
     nella versione 7. In aggiunta a questo, l'utilizzo di questa versione avrebbe impedito il versificarsi di conflitti fra JVM differenti all'interno della
-    stessa soluzione
+    stessa soluzione.
 \end{itemize}
 
 %Durante la fase di analisi iniziale sono stati individuati alcuni possibili rischi a cui si potrà andare incontro.
@@ -336,11 +332,11 @@ La prima difficoltà riscontrata consisteva nella scelta dell'archietettura del 
 doveva potersi integrare all'interno della piattaforma AMP. 
 
 \subsubsection*{Soluzione adottata}
-Ho deciso quindi di strutturare il modulo in 2 \emph{package} principali: source e driver. Così facendo ho potuto inserire tutto
-il codice relativo all'integrazione con il \emph{framework} OSGi e alla piattaforma AMP in generale all'interno di source.
+Ho deciso di strutturare il modulo in 2 \emph{package} principali: source e driver. Così facendo, ho potuto inserire tutto
+il codice relativo all'integrazione con il \emph{framework} OSGi e con la piattaforma AMP in un'unico posto.
 Questo ha permesso di poter astrarre il funzionamento del lettore, implementato all'interno del \emph{package} driver, rendendolo
 di fatto invisibile ad ogni suo utilizzatore. Il vantaggio principale di questa soluzione è la portabilità del modulo stesso, questo
-potrà essere riutilizzato in semplicità in futuri progetti cliente, indipendenti dalla piattaforma attualmente in uso.
+potrà essere riutilizzato con semplicità in futuri progetti cliente, indipendenti dalla piattaforma attualmente in uso.
 Una visione d'insieme di questa organizzazione è visibile nella figura \ref{package_diag}. In questa si può notare che il \emph{package}
 driver ne contenga a sua volta altri, specializzati per compito, completamente invisibili ad ogni possibile utilizzatore del
 modulo.
@@ -356,7 +352,7 @@ Al fine di rendere l'utilizzo del \emph{package} driver il più semplice possibi
 apposito, il \emph{command pattern}. Questo, come riportato in figura \ref{command_pattern}, permette di identificare le varie
 funzionalità e capacità di una componente del codice come azioni o comandi analoghi a quelli che possiamo trovare sul telecomando
 di un televisore. Ciò permette di utilizzare tutte le caratteristiche offerte dal lettore senza avere la necessità di conoscerne il
-funzionamento specifico, semplificando di conseguenza l'applicazione della \emph{bussiness logic} desiderata.
+funzionamento specifico, semplificando di conseguenza l'applicazione della \emph{business logic} desiderata.
 Oltre a ciò, tale \emph{pattern} è stato particolarmente adatto per la risultizione di altri problemi, uno di questi viene descritto
 approfonditamente nella sezione \ref{sub-sec:DLS}.
 
@@ -384,7 +380,7 @@ orientato agli oggetti.
 Per risolvere questo problema ho ricorso all'utilizzo della libreria JNA. Questa, tramite l'implementazione di interfacce ed oggetti appositi, 
 permette di effettuare un \emph{wrap} del codice nativo andando a rendere disponibili tutti i tipi di dati primitivi all'interno 
 dell'ecosistema JVM. Due esempi di come questo venga effettuato sono riportati nei frammenti di codice di seguito ripotati.
-Il primo frammento riporta la conversione di un tipo enumeratore denominato CommunicationStandard da nativo a tipo JVM e la conversione
+Il primo frammento mostra la conversione di un tipo enumeratore denominato CommunicationStandard da nativo a tipo JVM e la conversione
 di una funzione nativa che utilizza tale tipo come parametro.
 \begin{lstlisting}
     // RRU4JavaLibrary.java
@@ -410,7 +406,7 @@ di una funzione nativa che utilizza tale tipo come parametro.
         }
     }
 \end{lstlisting}
-Il secondo frammento mostra invece come venga effettuato il caricamente della libreria nativa a seconda della piattaforma
+Il secondo frammento, invece, mostra come venga effettuato il caricamente della libreria nativa a seconda della piattaforma
 in cui il modulo viene eseguito.
 \begin{lstlisting}
     // ReaderDllLoader.java
@@ -430,7 +426,7 @@ in cui il modulo viene eseguito.
 \label{callback}
 Questo però non è stato sufficente a risolvere i problemi relativi ai differenti paradgmi di programmazione utilizzati. La libreria, infatti, era strutturata
 in modo che ogni funzione richiamata ritornasse solo un codice di errore relativo alla libreria stessa. Ogni dato rilevante che ci si sarebbe potuti
-aspettare come risultato viene invece ricevuto come parametro di una funzione di \emph{callback}. Questo comporta una interruzione nel normale flusso di
+aspettare come risultato, viene invece ricevuto come parametro di una funzione di \emph{callback}. Questo comporta una interruzione nel normale flusso di
 chiamate dei metodi, con la conseguente necessità di gestione dei dati e degli errori.
 Per ovviare a ciò ho provveduto ad utilizzare un \emph{Exchanger} fornito dalla libreria standard di Java. 
 L'utilizzo di questo è visile nel frammento di codice di seguito riportato.
@@ -474,14 +470,14 @@ L'utilizzo di questo è visile nel frammento di codice di seguito riportato.
     }
 \end{lstlisting}
 
-Nello specifico, all'arrivo di una \emph{callback} la libreria JNA istanzia un nuovo \emph{thread} per elaborarla. 
+Nello specifico, all'arrivo di una \emph{callback}, la libreria JNA istanzia un nuovo \emph{thread} per elaborarla. 
 Il primo processo che durante l'esecuzione raggiunge l'\emph{exchanger} viene messo in attesa finchè anche il secondo non
 raggiunge il punto desiderato, instaurando di conseguenza una sincronia fra essi. Una volta che questa sincronia viene
 creata avviene uno scambio di dati tramite oggetti che permette ai \emph{thread} di continuare con la loro normale
 esecuzione.
 
 %**************************************************************
-\subsection{Gestione delle operazioni lettura}
+\subsection{Gestione delle operazioni di lettura}
 % Parlare del thread di lettura e della struttura producer-concumer utilizzata
 \subsubsection*{Problematica}
 Nonostante la sincronizzazione delle \emph{callback}, descritta nella sezione \ref{callback}, fornisca molteplici
@@ -489,16 +485,16 @@ vantaggi, pecca in quanto a prestazioni ed autonomia. Questo è dovuto in primo 
 del modulo, questo infatti deve poter essere utilizzabile, per esempio: dare informazioni sullo stato delle antenne, notificare
 dati ad AMP, modificare delle configurazioni del lettore, ecc. Nonostante stia eseguendo delle operazioni di lettura.
 Il secondo problema riscontrato è di natura invece più tecnica. Per come è stata implementata la libreria offerta dal produttore,
-anche le operazioni di lettura restituiscono i dati desiderati tramite il meccanismo delle \emph{callback}. Questo comportando
-la creazione di un nuovo \emph{thread} ogni volta che viene effetuata un'operazione di tale tipo rischia di saturare 
-i \emph{thread} offribili dal sistema operativo in uso.
+anche le operazioni di lettura restituiscono i dati desiderati tramite il meccanismo delle \emph{callback}. 
+Questo comportamento obbliga la creazione di un nuovo \emph{thread} ogni volta che viene effetuata una lettura, rischiando quindi di saturare 
+i \emph{thread} istanziabili dal sistema operativo in uso.
 
 \subsubsection*{Soluzione adottata}
 Per ovviare a questo problema ho deciso di trattare le \emph{callback} di lettura dati in modo diverso dalle altre. 
 Nello specifico, il \emph{thread} che viene creato ad ogni chiamata, viene liberato il più velocemente possibile grazie all'utilizzo di un
-"consumatore". Questo è un processo che a sua volta è incaricato di ricevere i dati delle letture tramite una struttura sincronizzata ad hoc, 
-lasciando quindi che la \emph{callback} muoia, per poi inviarli alla piattaforma AMP. Quanto descritto è visibile nel frammento di codice
-di seguito riportato.
+"consumatore". Questo è un processo incaricato di raccogliere i dati delle letture tramite l'utilizzo una struttura sincronizzata, 
+lasciando quindi che la \emph{callback} muoia il più velocemente possibile. Periodicamente questo processo provvederà l'invio di tali dati alla piattaforma AMP. 
+Quanto descritto è visibile nel frammento di codice di seguito riportato.
 
 \label{HandlerReading}
 \begin{lstlisting}
@@ -551,10 +547,10 @@ di seguito riportato.
 \label{sub-sec:DLS}
 \subsubsection*{Problematica}
 La quarta difficoltà riscontata consisteva in come gli utenti del modulo avrebbero potuto interfacciarsi con esso.
-Questi sono costituiti dagli tecnici che ne effettuano la configurazione e da altri moduli che ne modificano il funzionamento
-in base a precise regole di \emph{bussiness}. Per i primi è disponibile una finestra di dialogo all'interno di AMP che permette
-di inviare di inviare stringhe di testo al modulo, mentre per gli altri moduli è possibile inviare sempre del testo
-tramite delle apposite cose all'interno di AMP. Entrambe le tipologie di interazione portano quindi alla chiamata del medesimo metodo.
+Questi sono composti dai tecnici che effettuano la configurazione dei lettori, e da altri moduli che ne modificano il funzionamento
+in base a precise regole di \emph{business}. Per i primi è disponibile una finestra di dialogo all'interno di AMP che permette
+di inviare stringhe di testo al modulo. Per gli altri moduli è possibile inviare sempre del testo
+tramite delle apposite code all'interno di AMP. Entrambe le tipologie di interazione portano quindi alla chiamata del medesimo metodo.
 
 \subsubsection*{Soluzione adottata}
 Per creare un metodo di interazione che fosse univoco e facilmente mantenibile, ho quindi deciso di formalizzare un DLS, ovvero
@@ -562,13 +558,12 @@ un linguaggio di dominio specifico. Questo è un linguaggio di specifica utilizz
 comandi concatenabili.
 
 Per la creazione di tale linguaggio ho utilizzato la libreria \emph{open source} Parboiled. Questa fornisce tutto il necessario per l'implementazione
-di un \emph{parser} PEG direttamente all'interno del codice Java. In aggiunta a ciò viene fornita una implementazione di un \emph{parser} ricorsivo discendente ed il
-supporto per la costruzione di: \emph{abstract syntax tree}, report sugli errori di analisi e di procedure di recupero in caso di errore.
-Simile ad un CFG, PEG è una grammatica formale analitica deterministica che descrive un linguaggio formale in termini di un insieme di regole per riconoscere
+di un \emph{parser} PEG, Parsing Expression Grammar, direttamente all'interno del codice Java. In aggiunta a ciò viene fornita un'implementazione di un \emph{parser} ricorsivo discendente ed il
+supporto per la costruzione di: \emph{abstract syntax tree}, report sugli errori di analisi e procedure di recupero in caso di errore.
+Simile ad un \gls{cfgg}, PEG è una grammatica formale analitica deterministica, che descrive un linguaggio formale in termini di un insieme di regole per riconoscere
 le stringhe che appartengono al linguaggio.
-Nel frammento di codice di seguito riportato è possibile vedere come la libreria venga utilizzata per per la creazione di una parte della grammatica.
-Questo, unito all'utilizzo del Command Pattern descritto in precedenza, permette la creazione di comandi eseguibili partendo esclusivamente da testo.
-
+Nel frammento di codice, di seguito riportato, è possibile vedere come la libreria venga utilizzata per per la creazione di una parte della grammatica.
+Questo, unito all'utilizzo del \emph{Command Pattern} descritto in precedenza, permette la creazione di comandi eseguibili partendo esclusivamente da testo.
 \begin{lstlisting}
     // QueryParser.java
     @BuildParseTree
@@ -613,7 +608,7 @@ Questo, unito all'utilizzo del Command Pattern descritto in precedenza, permette
 \subsection{Tolleranza ai guasti}
 \subsubsection*{Problematica}
 La quinta difficoltà consisteva nella gestione dei guasti dovuti alla disconnessione del lettore dal modulo.
-Il problema è scomponibile in N problemi più piccoli, quali:
+Il problema è scomponibile in 3 problemi più piccoli, quali:
 \begin{itemize}
     \item Identificazione del guasto
     \item Procedura di arresto delle operazioni di lettura
@@ -667,7 +662,7 @@ Un frammento di codice relativo al funzionamento di questo è di seguito riporta
 Come è visibile, ogni secondo il \emph{thread} controlla che l'oggetto relativo alla connessione sia ancora valido.
 Nel caso in cui questo sia stato invalidato da una \emph{callback} apposita, andrà a tentare una riconnessione, che
 nel caso avesse successo, segnalerà al modulo la necessità di riconfigurare il lettore.
-La configurazione viene eseguita eseguendo nuovamente i comandi di configurazione che sono stati lanciati dall'avvio
+La configurazione viene effettuata eseguendo nuovamente i comandi di configurazione che sono stati lanciati dall'avvio
 del modulo. Affinchè questa lista di comandi non presenti ripetizioni inutili, prima di ogni inserimento viene effettuata
 una riduzione di tale lista. Di seguito viene riportato un frammento del codice responsabile di queste operazioni.
 \begin{lstlisting}
@@ -714,17 +709,16 @@ una riduzione di tale lista. Di seguito viene riportato un frammento del codice 
 %**************************************************************
 \section{Risultati raggiunti}
 \subsection{Requisiti soddisfatti}
-Un elemento oggettivo per descrivere la completezza del codice richiesto riguarda la copertura dei requisiti maturati durante lo stage.
+Un elemento oggettivo, per descrivere la completezza del codice richiesto, riguarda la copertura dei requisiti maturati durante lo stage.
 L’azienda, avendo già esperienza con progretti analoghi, non ha ritenuto necessario richiedere funzionalità 
-desiderabili o opzionali. Considerando infatti, tutte le richieste fatte, come necessarie affinchè il prodotto da me sviluppato potesse essere utilizzabile
+desiderabili o opzionali. Considerando infatti, tutte le richieste fatte come necessarie affinchè il prodotto sviluppato potesse essere utilizzabile
 all'interno delle loro soluzioni aziendali.
-Conseguentemente a ciò, i requisiti, funzionali, di vincolo e qualitativi, sono risultati essere tutti \textbf{obbligatori}.
+Conseguentemente a ciò, i requisiti funzionali, di vincolo e qualitativi, sono risultati essere tutti \textbf{obbligatori}.
 In sezione \ref{sub-sec:req} sono stati elencati solamente i requisiti degni di nota che però non rappresentano la totalità di quelli 
 effettivamente da soddisfare.
-La tabella \ref{tab:req-solved} a seguito invece rappresenta la totalità dei requisiti individuati con l’azienda.
+La tabella \ref{tab:req-solved} a seguito, invece, rappresenta la totalità dei requisiti individuati con l’azienda.
 \begin{table}[h!]
-    \label{tab:req-solved}
-    \begin{tabularx}{\textwidth}{ | X | X | X | X | }
+    \begin{tabularx}{\textwidth}{ | X | c | c | c | }
     \hline
     \textbf{Tipologia requisiti} & \textbf{Numero requisiti} & \textbf{Classificazione} & \textbf{Soddisfatti}\\
     \hline
@@ -736,6 +730,7 @@ La tabella \ref{tab:req-solved} a seguito invece rappresenta la totalità dei re
     \hline
     \end{tabularx}
     \caption{Piano di lavoro}
+    \label{tab:req-solved}
 \end{table}
 
 \subsection{Prodotti creati}
