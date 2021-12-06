@@ -7,16 +7,37 @@
 \label{cap:resoconto-progetto}
 %**************************************************************
 
-\intro{Nel corso di questo capitolo si presenta un resoconto del progetto, descrivendone gli aspetti nel dettaglio. Si illustrano le metodologie di lavoro utilizzato e le scelte
-dietro lo sviluppo delle componenti ritenute più rilevanti o critiche.}
+\intro{Nel corso di questo capitolo presento un resoconto del progetto, descrivendone gli aspetti nel dettaglio. Oltre a ciò, illustro le metodologie di lavoro utilizzate e le scelte
+che ho preso per la realizzazione delle componenti ritenute più rilevanti o critiche.}
 
 %**************************************************************
-\section{Pianificazione delle attività}
+%**************************************************************
+\section{Pianificazione del progetto}
+Nonostante abbia sviluppato l'intero applicativo in autonomia, ho seguito tutti i passi adoperati dal gruppo di sviluppo per la realizzazione
+di un progetto interno e quindi non finalizzato ad un cliente specifico.
+Questi sono elencati di seguito:
+\begin{itemize}
+    \item \textbf{Incontro con gli \emph{stakeholder}}: in questa fase viene fatto l’incontro tra il gruppo che andrà a sviluppare il prodotto e tutti 
+    gli attori interassati al proggetto. In questa sede vengono discusse varie idea, specificando i requisiti e gli obiettivi che il prodotto dovrà 
+    raggiungere;
+    \item \textbf{\emph{Scouting} delle tecnologie}: dopo aver acquisito le informazioni utili relative al progetto, il gruppo di lavoro inizia a ricercare 
+    le tecnologie che possono risultare più adatte a soddisfare le richieste poste dal committente, vagliando anche quelle più sperimentali ed innovative;
+    \item \textbf{Studio di fattibilità}: successivamente viene fatto lo studio di fattibilità, in modo tale da poter capire se il prodotto si possa sviluppare 
+    concretamente. Viene svolta anche un’analisi dei rischi e dei costi, al fine di poter presentare, a tutti gli interessati al progetto, una chiara panoramica
+    di quello che ci si aspetta essere il risultato finale. In questa fase il progetto può essere scartato se considerato non abbastanza vantaggioso;
+    \item \textbf{Sviluppo}: se gli attori coinvolti accettano quanto riportato dallo studio di fattibilità, allora si inizia con la fase vera 
+    e propria dello sviluppo del prodotto. 
+    Il lavoro viene suddiviso in tanti incrementi, come descritto nel modello Agile, così da garantirne un controllo completo. Allo stesso tempo,
+    una suddivisione incrementale permette una facile esposizione dei risultati raggiunti al committente.
+    \item \textbf{\emph{Testing}}: in questa fase il prodotto viene testato mediante specifici test, sia manuali che automatici, per verificarne le 
+    funzionalità e assicurarsi che il prodotto abbia soddisfatto le richieste del committente.
+\end{itemize}
+%**************************************************************
+\subsection{Attività pianificate}
 In accordo con il mio \emph{tutor} interno abbbiamo stilato un piano di lavoro suddividendo gli argomenti da affrontare di settimana in settimana, indicando poi per ciascuna settimana
 le ore di lavoro e le attività che avrei svolto. \\
 Tale piano viene riportato di seguito nella tabella \ref{tab:piano-di-lavoro}.
 %Viene riportato di seguito il piano di lavoro in forma tabellare:
-
 \begin{table}[!h]
 \begin{tabularx}{\textwidth}{|c|X|}
 \hline
@@ -44,110 +65,20 @@ stesura di un documento riassuntivo sulla tecnologia JNA e sulle librerie offert
 \caption{Piano di lavoro}
 \label{tab:piano-di-lavoro}
 \end{table}
-
-\subsection{Comunicazioni}
-Durante tutta la durata le progetto ho tenuto una comunicazione attiva con tutte le figure aziendali interessate al prodotto da me sviluppato. \\
-Ho tenuto giornalmente delle riunioni con il mio \emph{tutor} interno, della durata di circa 15 minuti in cui esponevo lo stato di avanzamento, riportando
-quanto svolgo durante nell'ultima giornata trascorsa, i problemi sorti e le mie proposte sullo sviluppo delle componenti richieste.
-Ho partecipato regolarmente alle riunioni di reparto, svolte ogni lunedì, della durata di circa un'ora in ho avuto la possibilità di rendere participi tutti
-gli sviluppatori presenti del lavoro da me svolto. %e avessi adoperato tecnologie o tecniche ritenute da me di interesse collettivo.
-Oltre agli incontri precedentemente citati, ho tenuto periodicamente delle revisioni del codice con uno dei dipendenti appartenente al gruppo di \emph{tech lead}
-per discutere le scelte progettuali ed implementative da me fatte, questo verrà approfondito nella sezione \ref{sub-sect:revisioni-progetto}.
-
-\subsection{Revisioni di progetto}
-\label{sub-sect:revisioni-progetto}
-La progettazione e lo sviluppo del progetto sono state intervallate da periodici controlli sulla qualità di quanto da me prodotto. Questi controlli erano
-effettuati da me ed un sviluppatore esperto facente parte del gruppo di \emph{tech lead} presente in azienda. Durante questi incrontri tutto il codice sorgente
-è stato revisionato, commendandone le caratteristiche e le scelte fatte. Al termine di questa fase, il prodotto
-veniva testato tramite la simulazione di contesti reali in cui potevo effettuare test di carico e controllare l'assenza di anomalie.
-
 %**************************************************************
-\section{Analisi del progetto}
-Nonostante abbia sviluppato l'intero applicativo in autonomia, ho seguito tutti i passi adoperati dal gruppo di sviluppo per la realizzazione
-di un progetto interno e quindi non finalizzato ad un cliente specifico.
-Questi sono elencati di seguito:
-\begin{itemize}
-    \item \textbf{Incontro con gli \emph{stakeholder}}: in questa fase viene fatto l’incontro tra il gruppo che andrà a sviluppare il prodotto e tutti 
-    gli attori interassati al proggetto. In questa sede vengono discusse varie idea, specificando i requisiti e gli obiettivi che il prodotto dovrà 
-    raggiungere;
-    \item \textbf{\emph{Scouting} delle tecnologie}: dopo aver acquisito le informazioni utili relative al progetto, il gruppo di lavoro inizia a ricercare 
-    le tecnologie che possono risultare più adatte a soddisfare le richieste poste dal committente, vagliando anche quelle più sperimentali ed innovative;
-    \item \textbf{Studio di fattibilità}: successivamente viene fatto lo studio di fattibilità, in modo tale da poter capire se il prodotto si possa sviluppare 
-    concretamente. Viene svolta anche un’analisi dei rischi e dei costi, al fine di poter presentare, a tutti gli interessati al progetto, una chiara panoramica
-    di quello che ci si aspetta essere il risultato finale. In questa fase il progetto può essere scartato se considerato non abbastanza vantaggioso;
-    \item \textbf{Sviluppo}: se gli attori coinvolti accettano quanto riportato dallo studio di fattibilità, allora si inizia con la fase vera 
-    e propria dello sviluppo del prodotto. 
-    Il lavoro viene suddiviso in tanti incrementi, come descritto nel modello Agile, così da garantirne un controllo completo. Allo stesso tempo,
-    una suddivisione incrementale permette una facile esposizione dei risultati raggiunti al committente.
-    \item \textbf{\emph{Testing}}: in questa fase il prodotto viene testato mediante specifici test, sia manuali che automatici, per verificarne le 
-    funzionalità e assicurarsi che il prodotto abbia soddisfatto le richieste del committente.
-\end{itemize}
-
-\subsection{Funzionalità principali}
-Dopo aver impostato gli incrementi, in accordo con il mio \emph{tutor} interno, ho redatto una lista di macro funzionalità che il prodotto avrebbe 
-dovuto avere:
-\begin{itemize}
-    \item \textbf{Funzionamento autonomo}: dovendo integrare questi lettori in contesti industriali in cui il carico di lavoro risulta essere particolarmente 
-    elevato, era necessario che i dispositivi potessero lavorare senza la presenza di un operatore umano, che gli azionasse e controllasse;
-    \item \textbf{Tolleranza ai guasti}: operando in contesti in cui agenti fisici possono facilmente interrompere la connessione ai dispositivi, era necesserio
-    identificare e gestire tali anomalie;
-    \item \textbf{Configurazione a "caldo"}: necessitando di cambi di configurazione durante il suo utilizzo, il prodotto doveva poter modificare alcuni 
-    parametri di configurazione senza la necessità di riavviarsi o di interrompere il flusso di lavoro in cui inserito;
-    \item \textbf{Integrazione con AMP}: dovendo inviare dati alla  piattaforma utilizzata per la realizzazione dei flussi di lavoro e ricevere comandi da essa, 
-    era necessario implementare una strategia di comunicazione con tale \emph{software};
-\end{itemize}
-
-\subsection{Obiettivi e requisiti chiave}
-
-\subsubsection*{Obiettivi}
-\label{sub-sub-sec:obiettivi-cap-3}
-Durante la fase di stesura del Piano di Lavoro, io ed il mio \emph{tutor} interno abbiamo prefissato degli obiettivi da raggiungere entro la fine dello stage.
-Di seguito sono riportati mediante una nomenclatura che li identifica univocamente:
-\begin{center}
-    [\textbf{classificazione}][\textbf{numero incrementale}]
-\end{center}
-dove il campo classificazione può avere uno dei seguenti valori:
-\begin{itemize}
-    \item \textbf{O}: obiettivi obbligatori, vincolanti in quanto obiettivo primario richiesto dal committente;
-    \item \textbf{D}: obiettivi desiderabili, non vincolanti o strettamente necessari, ma dal riconoscibile valore aggiunto;
-    \item \textbf{F}: obiettivi facoltativi, rappresentanti valore aggiunto non strettamente competitivo.
-\end{itemize}
-Vengono di seguito riportati in forma tabellare.
-\begin{table}[h!]
-    \label{tab:obiettivi}
-    \begin{tabularx}{\textwidth}{ | c | X |}
-    \hline
-    \textbf{Obiettivi} & \textbf{Descrizione}\\
-    \hline
-    O01 & Dimostrazione di una piena conoscenza della teoria legata alla tecnologia RFID \\
-    \hline
-    O02 & Realizzazione di un modulo software pienamente funzionante che rispetti le caratteristiche desiderate dagli stakeholder \\
-    \hline
-    O03 & Realizzazione della documentazione su quanto implementato e sulle tecnologie utilizzate \\
-    \hline
-    D01 & Realizzazione di uno studio di fattibilità sul \emph{porting} del modulo realizzato all'interno dei lettori RFID \\
-    \hline
-    F01 & Esposizione tramite API dello stato fisico dei lettori \\
-    \hline
-    \end{tabularx}
-    \caption{Piano di lavoro}
-\end{table}
-
-\subsubsection*{Analisi dei requisiti}
+\subsection{Requisiti chiave}
 \label{sub-sec:req}
-Al fine di raggiungere gli obiettivi elencati, io ed il mio \emph{tutor} interno, ci siamo concentrati nella raccorta di requisiti. Questi sono identificati
+Al fine di raggiungere gli obiettivi elencati nella sezione \ref{sec:obiettivi-cap-2}, io ed il mio \emph{tutor} interno, ci siamo concentrati nella raccorta di requisiti. Questi sono identificati
 da una nomenclatura univoca, cosí composta:
 \begin{center}
     \textbf{R}[\textbf{classificazione}][\textbf{tipologia}][\textbf{numero incrementale}]
 \end{center}
-
 Per \textbf{classificazione} del requisito si intende:
 \begin{itemize}
     \item \textbf{O}: obbligatoro;
     \item \textbf{D}: desiderabile;
     \item \textbf{F}: facoltativo.
 \end{itemize}
-
 Per \textbf{tipologia} del requisito si intende:
 \begin{itemize}
     \item \textbf{F}: funzionale;
@@ -155,7 +86,6 @@ Per \textbf{tipologia} del requisito si intende:
     \item \textbf{P}: prestazionale;
     \item \textbf{V}: vincolo.
 \end{itemize}
-
 Nella tabella \ref{tab:requisiti-fun} sono riportati solo i requisiti funzionali estratti dai Casi d'Uso più significativi presentati in sezione \ref{sub-sec:use-case}.
 \begin{table}[!htb]
     \begin{tabularx}{\textwidth}{ | c | X | c |}
@@ -216,7 +146,7 @@ Infine, i requisiti prestazionali rilevati sono elencati nella tabella \ref{tab:
     \caption{Tabella di tracciamento dei requisiti qualitativi}
     \label{tab:requisiti-pre}
 \end{table}
-\newpage
+%**************************************************************
 \subsection{Casi d'uso}
 \label{sub-sec:use-case}
 \begin{usecase}{1}{Visualizzazione configurazione del lettore}
@@ -284,7 +214,7 @@ della configurazione del lettore}
 \usecasepost{Il modulo entra in uno stato di \emph{recovery} in cui cerca di ripristinare la connessione e notifica l'utente dell'accaduto}
 \label{uc:5}
 \end{usecase}
-
+%**************************************************************
 \subsection{Tecnologie coinvolte}
 Per lo sviluppo del modulo, come accennato in sezione \ref{sub-sec:vinc-tec}, sono state utilizzate le seguenti tecnologie:
 \begin{itemize}
@@ -312,6 +242,8 @@ Per lo sviluppo del modulo, come accennato in sezione \ref{sub-sec:vinc-tec}, so
     nella versione 7. In aggiunta a questo, l'utilizzo di questa versione avrebbe impedito il versificarsi di conflitti fra JVM differenti all'interno della
     stessa soluzione.
 \end{itemize}
+%**************************************************************
+%**************************************************************
 
 %Durante la fase di analisi iniziale sono stati individuati alcuni possibili rischi a cui si potrà andare incontro.
 %Si è quindi proceduto a elaborare delle possibili soluzioni per far fronte a tali rischi.\\
@@ -323,28 +255,27 @@ Per lo sviluppo del modulo, come accennato in sezione \ref{sub-sec:vinc-tec}, so
 %\end{risk}
 
 %**************************************************************
-\section{Sviluppo delle componenti critiche}
-Durante lo sviluppo del modulo sono state identificati e risolti numerosi problemi, i più importanti tra questi sono stati illustrati di seguito.
-\subsection{Design del modulo}
+\section{Realizzazione delle componenti critiche}
+Durante la realizzazione del progetto sono state identificati e risolti numerosi problemi, i più importanti tra questi sono stati illustrati di seguito.
+\subsection{Progettazione archietetturale}
 
 \subsubsection*{Problematica}
-La prima difficoltà riscontrata consisteva nella scelta dell'archietettura del modulo. Questo infatti, come descritto precedentemente, 
+La prima difficoltà riscontrata consisteva nella scelta dell'archietettura del software. Questo infatti, come descritto precedentemente, 
 doveva potersi integrare all'interno della piattaforma AMP. 
 
 \subsubsection*{Soluzione adottata}
-Ho deciso di strutturare il modulo in 2 \emph{package} principali: source e driver. Così facendo, ho potuto inserire tutto
+Ho deciso di suddividere il codice sorgente in 2 \emph{package} principali: source e driver. Così facendo, ho potuto inserire tutto
 il codice relativo all'integrazione con il \emph{framework} OSGi e con la piattaforma AMP in un'unico posto.
 Questo ha permesso di poter astrarre il funzionamento del lettore, implementato all'interno del \emph{package} driver, rendendolo
-di fatto invisibile ad ogni suo utilizzatore. Il vantaggio principale di questa soluzione è la portabilità del modulo stesso, questo
+di fatto invisibile ad ogni suo utilizzatore. Il vantaggio principale di questa soluzione è la portabilità del codice stesso, questo
 potrà essere riutilizzato con semplicità in futuri progetti cliente, indipendenti dalla piattaforma attualmente in uso.
 Una visione d'insieme di questa organizzazione è visibile nella figura \ref{package_diag}. In questa si può notare che il \emph{package}
-driver ne contenga a sua volta altri, specializzati per compito, completamente invisibili ad ogni possibile utilizzatore del
-modulo.
+driver ne contenga a sua volta altri, specializzati per compito.
 
 \begin{figure}[!h] 
     \centering 
     \includegraphics[width=1\columnwidth]{tec/UML/package_diag.png} 
-    \caption{Diagramma dei package del modulo}
+    \caption{Diagramma dei package}
     \label{package_diag}
 \end{figure}
 
@@ -406,8 +337,8 @@ di una funzione nativa che utilizza tale tipo come parametro.
         }
     }
 \end{lstlisting}
-Il secondo frammento, invece, mostra come venga effettuato il caricamente della libreria nativa a seconda della piattaforma
-in cui il modulo viene eseguito.
+Il secondo frammento, invece, mostra come venga effettuato il caricamente della libreria nativa a seconda del sistema operativo
+in cui il codice viene eseguito.
 \begin{lstlisting}
     // ReaderDllLoader.java
     public class ReaderDllLoader {
@@ -482,8 +413,8 @@ esecuzione.
 \subsubsection*{Problematica}
 Nonostante la sincronizzazione delle \emph{callback}, descritta nella sezione \ref{callback}, fornisca molteplici
 vantaggi, pecca in quanto a prestazioni ed autonomia. Questo è dovuto in primo luogo alle aspettative sul funzionamento
-del modulo, questo infatti deve poter essere utilizzabile, per esempio: dare informazioni sullo stato delle antenne, notificare
-dati ad AMP, modificare delle configurazioni del lettore, ecc. Nonostante stia eseguendo delle operazioni di lettura.
+dell'applicativo, questo infatti deve poter essere utilizzabile, per esempio: dando informazioni sullo stato delle antenne, notificando
+dati ad AMP, modificando delle configurazioni del lettore, ecc., nonostante stia eseguendo delle operazioni di lettura.
 Il secondo problema riscontrato è di natura invece più tecnica. Per come è stata implementata la libreria offerta dal produttore,
 anche le operazioni di lettura restituiscono i dati desiderati tramite il meccanismo delle \emph{callback}. 
 Questo comportamento obbliga la creazione di un nuovo \emph{thread} ogni volta che viene effetuata una lettura, rischiando quindi di saturare 
@@ -546,10 +477,10 @@ Quanto descritto è visibile nel frammento di codice di seguito riportato.
 \subsection{Linguaggio di dominio specifico}
 \label{sub-sec:DLS}
 \subsubsection*{Problematica}
-La quarta difficoltà riscontata consisteva in come gli utenti del modulo avrebbero potuto interfacciarsi con esso.
-Questi sono composti dai tecnici che effettuano la configurazione dei lettori, e da altri moduli che ne modificano il funzionamento
+La quarta difficoltà riscontata consisteva in come gli utenti dell'applicativo avrebbero potuto interfacciarsi con esso.
+Questi sono composti dai tecnici che effettuano la configurazione dei lettori, e da altri applicativi che ne modificano il funzionamento
 in base a precise regole di \emph{business}. Per i primi è disponibile una finestra di dialogo all'interno di AMP che permette
-di inviare stringhe di testo al modulo. Per gli altri moduli è possibile inviare sempre del testo
+di inviare stringhe di testo. Per gli altri applicativi è possibile inviare sempre del testo
 tramite delle apposite code all'interno di AMP. Entrambe le tipologie di interazione portano quindi alla chiamata del medesimo metodo.
 
 \subsubsection*{Soluzione adottata}
@@ -607,7 +538,7 @@ Questo, unito all'utilizzo del \emph{Command Pattern} descritto in precedenza, p
 %Qui parlo del command pattern utilizzato per tutte le interazioni e nello specifico quello delle porte GPIO
 \subsection{Tolleranza ai guasti}
 \subsubsection*{Problematica}
-La quinta difficoltà consisteva nella gestione dei guasti dovuti alla disconnessione del lettore dal modulo.
+La quinta difficoltà consisteva nella gestione dei guasti dovuti alla disconnessione del lettore dall'applicativo.
 Il problema è scomponibile in 3 problemi più piccoli, quali:
 \begin{itemize}
     \item Identificazione del guasto
@@ -661,9 +592,9 @@ Un frammento di codice relativo al funzionamento di questo è di seguito riporta
 \end{lstlisting}
 Come è visibile, ogni secondo il \emph{thread} controlla che l'oggetto relativo alla connessione sia ancora valido.
 Nel caso in cui questo sia stato invalidato da una \emph{callback} apposita, andrà a tentare una riconnessione, che
-nel caso avesse successo, segnalerà al modulo la necessità di riconfigurare il lettore.
-La configurazione viene effettuata eseguendo nuovamente i comandi di configurazione che sono stati lanciati dall'avvio
-del modulo. Affinchè questa lista di comandi non presenti ripetizioni inutili, prima di ogni inserimento viene effettuata
+nel caso avesse successo, segnalerà all'applicativo la necessità di riconfigurare il lettore.
+La configurazione viene effettuata eseguendo nuovamente i comandi di configurazione che sono stati lanciati dall'avvio. 
+Affinchè questa lista di comandi non presenti ripetizioni inutili, prima di ogni inserimento viene effettuata
 una riduzione di tale lista. Di seguito viene riportato un frammento del codice responsabile di queste operazioni.
 \begin{lstlisting}
     // ConfigurationCommandHistory.java
@@ -705,9 +636,34 @@ una riduzione di tale lista. Di seguito viene riportato un frammento del codice 
 	}
     }
 \end{lstlisting}
-
+%**************************************************************
 %**************************************************************
 \section{Risultati raggiunti}
+Alla fine dello sviluppo fatto durante lo stage l'applicativo, ha preso forma sia a livello grafico che a livello strutturale.
+Il risultato che ho ottenuto è stato quello di un applicativo che raggiunge pienamente gli obiettivi imposti dall’azienda,
+soprattutto per riguarda l'integrazione con la piattaforma AMP.
+Un tecnico specializzato, dopo aver avviato AMP, potrà utilizzare l'applicativo andandolo a selezionare da una lista apposita.
+Verrà visualizzato a schermo quindi un nuovo blocco analogo a quelli presenti in figura \ref{amp-figure}, per applicarlo al
+flusso di lavoro desiderato.
+\begin{figure}[!h] 
+    \centering 
+    \includegraphics[width=0.9\columnwidth]{azienda/flusso_RFID.jpeg} 
+    \caption{Piattaforma AMP - \textbf{fonte} \url{urly.it/3grac} }
+    \label{amp-figure}
+\end{figure}
+Successivamente potrà effettuare un clic sopra di esso per accedere ad un ulteriore menu riportante le seguenti opzioni:
+\begin{itemize}
+    \item \textbf{Avvio}: permette l'avvio dell'applicativo;
+    \item \textbf{Arresto}: permette arrestare l'applicativo;
+    \item \textbf{Elimina}: permette di rimuovere l'applicativo dall'ambiente di lavoro, nel caso sia inserito anche all'interno di un flusso
+    viene eliminato anche da questo;
+    \item \textbf{Ricarica}: permette di effettuare un riavvio dell'applicativo;
+    \item \textbf{Configura}: permette di accedere ad una schermata di inserimento testo dove è possibile inviare comandi di configurazione.
+\end{itemize}
+Per raggiungere tale risultato ho prodotto diversi file sorgente per un totale di circa 3600 righe di codice, ognuno di essi corredato
+con l'opportuna documentazione sotto forma di Java-doc. In aggiunta a questo, per facilitare la manutenzione dell'applicativo, ho redatto 3 documenti, uno riguardante l'utilizzo
+della libreria JNA e due riguardanti le parti componenti che ho ritenuto più rilevanti.
+%**************************************************************
 \subsection{Requisiti soddisfatti}
 Un elemento oggettivo, per descrivere la completezza del codice richiesto, riguarda la copertura dei requisiti maturati durante lo stage.
 L’azienda, avendo già esperienza con progretti analoghi, non ha ritenuto necessario richiedere funzionalità 
@@ -732,9 +688,3 @@ La tabella \ref{tab:req-solved} a seguito, invece, rappresenta la totalità dei 
     \caption{Piano di lavoro}
     \label{tab:req-solved}
 \end{table}
-
-\subsection{Prodotti creati}
-Un altro elemento oggettivo sul lavoro svolto è sicuramente la quantità di prodotti creati. 
-Nel caso specifico ho prodotto diversi file sorgente per un totale di circa 3600 righe di codice, ognuno di essi corredato
-con l'opportuna documentazione sotto forma di Java-doc. In aggiunta a questo ho redatto 3 documenti, uno riguardante l'utilizzo
-della libreria JNA e due riguardanti le parti più rilevanti del modulo.
